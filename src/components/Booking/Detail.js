@@ -3,23 +3,23 @@ import Seat from './Seat/Seat';
 import Wheel from './Seat/Wheel';
 import SeatSelect from './Seat/SeatSelect';
 import SeatBooked from './Seat/SeatBooked';
-import LoadingSpin from '../Loading/LoadingSpin';
-import { Card } from 'antd';
+import Loading from '../Loading/Loading';
+import { Card, Progress, Tooltip } from 'antd';
 import './Detail.css';
 
 const Detail = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [dateTime, setDateTime] = useState('');
-    const [selectedSeats, setSelectedSeats] = useState({}); // State to track selected seats
+    const [selectedSeats, setSelectedSeats] = useState({});
 
     useEffect(() => {
         // Simulate data loading
         setTimeout(() => {
-            setIsLoading(false);
             const today = new Date();
             const date = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
             const time = `${today.getHours()}:${String(today.getMinutes()).padStart(2, '0')}:${String(today.getSeconds()).padStart(2, '0')}`;
             setDateTime(`${date} ${time}`);
+            setIsLoading(false);
         }, 2000);
     }, []);
 
@@ -94,13 +94,67 @@ const Detail = () => {
         );
     };
 
+    const [currentStep, setCurrentStep] = useState(1);
+
+    const handleNext = () => {
+        setCurrentStep(prevStep => (prevStep < 4 ? prevStep + 1 : prevStep));
+    };
+
+    const handleBack = () => {
+        setCurrentStep(prevStep => (prevStep > 1 ? prevStep - 1 : prevStep));
+    };
+
+    const getProgressPercent = (step) => {
+        switch (step) {
+            case 2:
+                return 33;
+            case 3:
+                return 66;
+            case 4:
+                return 100;
+            default:
+                return 0;
+        }
+    };
+
     return (
         <>
             <Card>
                 {isLoading ? (
-                    <LoadingSpin />
+                    <Loading />
                 ) : (
-                    <>
+                    <>  <div className="app-container">
+                        <div className="steps-container">
+                            <div className={`step ${currentStep === 1 ? 'active' : ''}`}>
+                                1. Chọn chỗ ngồi
+                            </div>
+                            <div className={`step ${currentStep === 2 ? 'active' : ''}`}>
+                                2. Điểm đón trả
+                            </div>
+                            <div className={`step ${currentStep === 3 ? 'active' : ''}`}>
+                                3. Thanh toán
+                            </div>
+                        </div>
+                        <Tooltip>
+                            <Progress percent={getProgressPercent(currentStep)} />
+                        </Tooltip>
+                        <div className="buttons-container">
+                            <button
+                                onClick={handleBack}
+                                disabled={currentStep === 1}
+                                className={currentStep === 1 ? 'disabled' : ''}
+                            >
+                                Quay lại
+                            </button>
+                            <button
+                                onClick={handleNext}
+                                disabled={currentStep === 4}
+                                className={currentStep === 4 ? 'disabled' : ''}
+                            >
+                                Tiếp
+                            </button>
+                        </div>
+                    </div>
                         <div className="TrustMessage__Container-sc-8xur6b-0 deVKGv trust-message-container undefined" style={{ color: 'rgb(14, 99, 193)' }}>
                             <p className="base__Body02-sc-1tvbuqk-14 VqdXU trust-message-content">VeXeRe cam kết giữ đúng vị trí bạn đã chọn.</p>
                         </div>
@@ -111,9 +165,11 @@ const Detail = () => {
                                         Chú thích
                                     </div>
                                     <div className="seat-info">
-                                        <div className="seat-thumbnail">
-                                            <Seat />
-                                        </div>
+                                        <Tooltip title="250.000đ">
+                                            <div className="seat-thumbnail">
+                                                <Seat />
+                                            </div>
+                                        </Tooltip>
                                         <span className="seat-name">Còn trống</span>
                                     </div>
                                     <div className="seat-info">
