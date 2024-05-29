@@ -1,5 +1,5 @@
-// import React from "react";
-import Logo from "../public/logo-trangchu.svg";
+import React from "react";
+import Logo from "../Header/logo-trangchu.svg";
 
 function Header() {
   return (
