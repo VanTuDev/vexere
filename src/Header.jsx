@@ -1,5 +1,5 @@
 // import React from "react";
-import logo from "../public/logo-trangchu.svg";
+import Logo from "../public/logo-trangchu.svg";
 
 function Header() {
   return (
@@ -7,8 +7,9 @@ function Header() {
       <div className="flex flex-col md:flex-row md:items-center">
         <div className="w-full md:w-1/3 flex flex-col md:flex-row items-center gap-7">
           <div className="w-1/2 md:w-auto">
-            <img src={logo} alt="logo" />
+            <img src={Logo} alt="logo" />
           </div>
+          <div></div>
           <div className="font-bold text-white text-center md:text-left">
             <p>Cam kết hoàn 150 nếu nhà xe không giữ vé</p>
           </div>
