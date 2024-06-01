@@ -1,20 +1,32 @@
-import logo from "./logo.svg";
 import ReactDOM from "react-dom/client";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Detail from "./components/Booking/Detail";
+import MegaMenu from "./components/MegaMenu/MegaMenu";
 import Header from "./components/Header/Header";
 import "./index.css"; // Import Tailwind CSS
+import Sort from "./components/Sort/Sort.js";
+import Card from "./components/Card/Card.js";
+
 export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Header />}></Route>
-      </Routes>
+      <div className="bg-slate-100">
+        <Routes>
+          <Route path="/" element={<Header />}></Route>
+        </Routes>
 
-      <Routes>
-        <Route path="/" element={<Detail />}></Route>
-      </Routes>
+        <Routes>
+          <Route path="/" element={<MegaMenu />}></Route>
+        </Routes>
+        <div className="flex ">
+          <Routes>
+            <Route path="/" element={<Sort />}></Route>
+          </Routes>
+          <Routes>
+            <Route path="/" element={<Card />}></Route>
+          </Routes>
+        </div>
+      </div>
     </BrowserRouter>
   );
 }
