@@ -4,13 +4,16 @@ import Wheel from './Seat/Wheel';
 import SeatSelect from './Seat/SeatSelect';
 import SeatBooked from './Seat/SeatBooked';
 import Loading from '../Loading/Loading';
-import { Card, Progress, Tooltip } from 'antd';
+import { Card, Progress, Tooltip, Button, Statistic } from 'antd';
 import './Detail.css';
 
-const Detail = () => {
+
+
+const Detail = ({ trip }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [dateTime, setDateTime] = useState('');
     const [selectedSeats, setSelectedSeats] = useState({});
+    const [currentStep, setCurrentStep] = useState(1);
 
     useEffect(() => {
         // Simulate data loading
@@ -30,38 +33,67 @@ const Detail = () => {
         }));
     };
 
-    const renderFloor = () => {
-        const rows = 4; // Set number of rows to 4
-        const cols = 3; // Set number of columns to 3
+    const renderSeats = (rows, cols, floorNumber = 0) => {
         const floor = [];
-
         for (let row = 0; row < rows; row++) {
             const seatRow = [];
             for (let col = 0; col < cols; col++) {
-                const key = `${row}-${col}`;
-                if ((row === 1 || row === 2) && col === 1) {
-                    seatRow.push(
-                        <td
-                            key={key}
-                            className="Seat__SeatContainer-sc-6hr0u8-0 buebkj seat-container"
-                            data-disabled="true"
-                            disabled=""
-                        ></td>
-                    );
-                } else {
-                    const isSelected = selectedSeats[key];
-                    seatRow.push(
-                        <td
-                            key={key}
-                            className="seat"
-                            onClick={() => handleSeatClick(key)}
-                        >
-                            {isSelected ? <SeatSelect /> : <Seat />}
-                        </td>
-                    );
-                }
+                const key = `${floorNumber}-${row}-${col}`;
+                const isSelected = selectedSeats[key];
+                seatRow.push(
+                    <td
+                        key={key}
+                        className="seat"
+                        onClick={() => handleSeatClick(key)}
+                    >
+                        {isSelected ? <SeatSelect /> : <Seat />}
+                    </td>
+                );
             }
-            floor.push(<tr key={`row-${row}`} className="coach-row">{seatRow}</tr>);
+            floor.push(<tr key={`row-${floorNumber}-${row}`} className="coach-row">{seatRow}</tr>);
+        }
+        return floor;
+    };
+
+    const renderFloor = () => {
+        let floorContent;
+        switch (parseInt(trip.seat)) {
+            case 7:
+                floorContent = (
+                    <table>
+                        <tbody>
+                            {renderSeats(1, 2)}
+                            {renderSeats(1, 3)}
+                            {renderSeats(1, 2)}
+                        </tbody>
+                    </table>
+                );
+                break;
+            case 16:
+                floorContent = (
+                    <table>
+                        <tbody>
+                            {renderSeats(4, 4)}
+                        </tbody>
+                    </table>
+                );
+                break;
+            case 30:
+                floorContent = (
+                    <>
+                        <h4>Tầng 1</h4>
+                        <table>
+                            <tbody>{renderSeats(5, 3, 1)}</tbody>
+                        </table>
+                        <h4>Tầng 2</h4>
+                        <table>
+                            <tbody>{renderSeats(5, 3, 2)}</tbody>
+                        </table>
+                    </>
+                );
+                break;
+            default:
+                floorContent = <p>Loại xe không xác định</p>;
         }
 
         return (
@@ -69,24 +101,12 @@ const Detail = () => {
                 <div className="coach">
                     <table>
                         <tbody>
+                            <td className="wheel">
+                                <Wheel />
+                            </td>
                             <tr className="coach-row">
-                                <td className="seat">
-                                    <Wheel />
-                                </td>
-                                <td
-                                    className="seat"
-                                    onClick={() => handleSeatClick('0-1')}
-                                >
-                                    {selectedSeats['0-1'] ? <SeatSelect /> : <Seat />}
-                                </td>
-                                <td
-                                    className="seat"
-                                    onClick={() => handleSeatClick('0-2')}
-                                >
-                                    {selectedSeats['0-2'] ? <SeatSelect /> : <Seat />}
-                                </td>
                             </tr>
-                            {floor}
+                            {Array.isArray(floorContent) ? floorContent : <tr><td>{floorContent}</td></tr>}
                         </tbody>
                     </table>
                 </div>
@@ -94,7 +114,6 @@ const Detail = () => {
         );
     };
 
-    const [currentStep, setCurrentStep] = useState(1);
 
     const handleNext = () => {
         setCurrentStep(prevStep => (prevStep < 4 ? prevStep + 1 : prevStep));
@@ -117,13 +136,16 @@ const Detail = () => {
         }
     };
 
+    const { Countdown } = Statistic;
+
     return (
         <>
-            <Card>
-                {isLoading ? (
-                    <Loading />
-                ) : (
-                    <>  <div className="app-container">
+
+            {isLoading ? (
+                <Loading />
+            ) : (
+                <>
+                    <div className="app-container">
                         <div className="steps-container">
                             <div className={`step ${currentStep === 1 ? 'active' : ''}`}>
                                 1. Chọn chỗ ngồi
@@ -155,44 +177,61 @@ const Detail = () => {
                             </button>
                         </div>
                     </div>
-                        <div className="TrustMessage__Container-sc-8xur6b-0 deVKGv trust-message-container undefined" style={{ color: 'rgb(14, 99, 193)' }}>
-                            <p className="base__Body02-sc-1tvbuqk-14 VqdXU trust-message-content">VeXeRe cam kết giữ đúng vị trí bạn đã chọn.</p>
-                        </div>
-                        <div className="flex justify-center items-center">
-                            <div className="list-seat flex" style={{ width: '80%' }}>
-                                <div className="seat-groups">
-                                    <div className="note text-base font-bold">
-                                        Chú thích
-                                    </div>
-                                    <div className="seat-info">
-                                        <Tooltip title="250.000đ">
-                                            <div className="seat-thumbnail">
-                                                <Seat />
-                                            </div>
-                                        </Tooltip>
-                                        <span className="seat-name">Còn trống</span>
-                                    </div>
-                                    <div className="seat-info">
+                    <div className="TrustMessage__Container-sc-8xur6b-0 deVKGv trust-message-container undefined" style={{ color: 'rgb(14, 99, 193)' }}>
+                        <p className="base__Body02-sc-1tvbuqk-14 VqdXU trust-message-content">VeXeRe cam kết giữ đúng vị trí bạn đã chọn.</p>
+                    </div>
+                    <div className="flex justify-center items-center">
+                        <div className="list-seat flex" >
+                            <div className="seat-groups">
+                                <div className="note text-base font-bold">
+                                    Chú thích
+                                </div>
+                                <div className="seat-info">
+                                    <Tooltip title="250.000đ">
+                                        <div className="seat-thumbnail">
+                                            <Seat />
+                                        </div>
+                                    </Tooltip>
+                                    <span className="seat-name">Còn trống</span>
+                                </div>
+                                <div className="seat-info">
+                                    <Tooltip title="Không chọn ghế này">
                                         <div className="seat-thumbnail" disabled>
                                             <SeatBooked />
                                         </div>
-                                        <span className="seat-name">Ghế đã được đặt</span>
-                                    </div>
-                                    <div className="seat-info">
-                                        <div className="seat-thumbnail">
-                                            <SeatSelect />
-                                        </div>
-                                        <span className="seat-name">Ghế Đang chọn</span>
-                                    </div>
-                                    <div />
+                                    </Tooltip>
+                                    <span className="seat-name">Ghế đã được đặt</span>
                                 </div>
-                                <div className="seat-template flex justify-center items-center">{renderFloor()}</div>
+                                <div className="seat-info">
+                                    <div className="seat-thumbnail">
+                                        <SeatSelect />
+                                    </div>
+                                    <span className="seat-name">Ghế Đang chọn</span>
+                                </div>
+                                <div />
                             </div>
+                            <div className="seat-template flex justify-center items-center">{renderFloor()}</div>
                         </div>
-                        <p>Current date and time: {dateTime}</p>
-                    </>
-                )}
-            </Card>
+                    </div>
+                    <div className='countdown d-flex align-items-center'>
+                        <h4 className='me-3'>Thời gian còn lại để chọn chỗ:</h4>
+                        <Countdown
+                            value={Date.now() + 900000}
+                            format="mm:ss"
+                        />
+                    </div>
+
+                    {trip && (
+                        <div className="selected-trip-info">
+                            <h3>Thông tin chuyến đã chọn:</h3>
+                            <p>Tên chuyến: {trip.name}</p> <p>Xe {trip.seat} chỗ</p>
+                            <p>Ngày: {trip.date}</p>
+                            <p>Giờ: {trip.time}</p>
+                        </div>
+                    )}
+                </>
+            )}
+
         </>
     );
 };
