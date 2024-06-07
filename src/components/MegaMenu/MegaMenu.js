@@ -1,13 +1,14 @@
-import iconXeKhach from "../MegaMenu/iconXeKhach.js";
-import Input from "./InputStart";
+import React from "react";
+import InputStart from "./InputStart";
+import InputEnd from "./inputEnd.js";
 import { DatePicker } from "antd";
-
+import "./button.css";
 function MegaMenu() {
   return (
-    <div className="w-7/12 m-auto bg-white px-4 py-2 mt-4 rounded-lg">
-      <div className="flex items-center justify-center ">
+    <div className="w-full md:w-7/12 mx-auto bg-white py-2 mt-4 rounded-lg">
+      <div className="flex flex-col md:flex-row items-center justify-center">
         <div className="flex flex-col gap-4">
-          <div className="flex gap-1">
+          <div className="flex flex-wrap gap-1 justify-center">
             <div className="bg-white py-4 px-10 border-4 border-red-500">
               <a className="no-underline" href="#">
                 300K
@@ -20,6 +21,7 @@ function MegaMenu() {
                 Máy bay
               </a>
             </div>
+
             <div className="bg-white py-4 px-10">
               <img src="" alt="🚂" />
               <a className="no-underline" href="">
@@ -29,31 +31,29 @@ function MegaMenu() {
           </div>
         </div>
       </div>
-      <div className=" w-11/12 m-auto flex flex-row gap-2.5 mt-4">
-        <div className="w-44 bg-white px-2 py-2">
-          <p className="text-xs m-0  ">Nơi xuất phát</p>
-          <Input></Input>
+
+      <div className="w-full md:w-11/12 mx-auto flex flex-wrap justify-around gap-3 mt-4">
+        <div className="w-full md:w-2/12 bg-white px-2 py-2">
+          <p className="text-xs m-0">Nơi xuất phát</p>
+          <InputStart />
         </div>
 
-        <div className="w-44 bg-white  px-2 pt-2 ">
-          <p className="text-xs m-0  ">Nơi đến</p>
-          <Input></Input>
+        <div className="w-full md:w-2/12 bg-white px-2 pt-2">
+          <p className="text-xs m-0">Nơi đến</p>
+          <InputEnd />
         </div>
-        <div className="w-30 bg-white  px-2 py-2">
-          <p className="text-xs m-0">Ngày đi </p>
-          <DatePicker></DatePicker>
+
+        <div className="w-full md:w-2/12 bg-white px-2 py-2">
+          <p className="text-xs m-0">Ngày đi</p>
+          <DatePicker />
         </div>
-        <div className="w-40 bg-white text-blue-500  text-center px-2 py-2 cursor-pointer">
-          <a className="text-lg font-text-sm m-2 align-middle font-normal">
-            + Thêm ngày về
-          </a>
+
+        <div className="w-full md:w-2/12 bg-white px-2 py-2">
+          <p className="text-xs m-0">ngày về</p>
+          <DatePicker />
         </div>
-        <button
-          type="button"
-          className="bg-yellow-600 text-lg  w-32 rounded-lg"
-        >
-          Tìm kiếm
-        </button>
+
+        <button className="btn">Tìm kiếm</button>
       </div>
     </div>
   );

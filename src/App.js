@@ -10,7 +10,7 @@ import Card from "./components/Card/Card.js";
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="bg-slate-100">
+      <div className="bg-slate-100 p-0">
         <Routes>
           <Route path="/" element={<Header />}></Route>
         </Routes>
@@ -18,7 +18,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<MegaMenu />}></Route>
         </Routes>
-        <div className="flex ">
+        <div className="w-7/12 flex gap-10 p-0 m-auto ">
           <Routes>
             <Route path="/" element={<Sort />}></Route>
           </Routes>

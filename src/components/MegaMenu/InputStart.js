@@ -14,7 +14,7 @@ const options = [
 const App = () => (
   <AutoComplete
     style={{
-      width: 200,
+      width: 180,
     }}
     options={options}
     filterOption={(inputValue, option) =>
