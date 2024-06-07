@@ -1,4 +1,4 @@
-// import XeKhach from "../MegaMenu/XeKhach.svg";
+import iconXeKhach from "../MegaMenu/iconXeKhach.js";
 import Input from "./InputStart";
 import { DatePicker } from "antd";
 
@@ -9,11 +9,11 @@ function MegaMenu() {
         <div className="flex flex-col gap-4">
           <div className="flex gap-1">
             <div className="bg-white py-4 px-10 border-4 border-red-500">
-              <img src="" alt="🚍" />
-              <a className="no-underline" href="">
+              <a className="no-underline" href="#">
                 300K
               </a>
             </div>
+
             <div className="bg-white py-4 px-10">
               <img src="" alt="✈" />
               <a className="no-underline" href="">

@@ -3,7 +3,7 @@ import Filter from "./Filter"; // Import the Filter component
 
 function Sort({ sortOption, handleSortChange }) {
   return (
-    <div className="w-56 bg-white ml-80  mt-6 px-3 py-4 rounded-md shadow-md">
+    <div className="w-56 bg-white ml-[410px] mt-6 px-3 py-4 rounded-md shadow-md">
       <h2 className="text-gray-700 mb-2 ml-6">Sắp xếp</h2>
       <div>
         <label className="block">
