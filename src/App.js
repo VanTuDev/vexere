@@ -22,7 +22,6 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Sort />}></Route>
           </Routes>
-
           <Routes>
             <Route path="/" element={<Card />}></Route>
           </Routes>

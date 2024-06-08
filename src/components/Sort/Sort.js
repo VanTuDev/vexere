@@ -3,7 +3,7 @@ import Filter from "./Filter"; // Import the Filter component
 
 function Sort({ sortOption, handleSortChange }) {
   return (
-    <div className="w-full bg-white mt-6 px-6 py-4 m-0 rounded-md shadow-md">
+    <div className="w-full bg-white mt-6 px-7 py-4 m-0 rounded-md shadow-md">
       <h2 className="text-gray-700 mb-2 ml-6">Sắp xếp</h2>
       <div>
         <label className="block">
@@ -86,7 +86,7 @@ function App() {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-0 ">
       <Sort sortOption={sortOption} handleSortChange={handleSortChange} />
       <Filter /> {/* Render the Filter component */}
       {/* Other components can go here */}

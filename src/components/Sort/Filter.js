@@ -3,7 +3,7 @@ import React from "react";
 
 function Filter() {
   return (
-    <div className="w-full bg-white mt-6 px-6 py-4 rounded-md shadow-md">
+    <div className="w-full bg-white mt-2 px-7 py-4 rounded-md shadow-md">
       <div className="flex justify-between items-center mb-2">
         <h2 className="text-gray-700">Lọc</h2>
         <a className="text-blue-500 px-2 py-1 rounded-md text-sm " href="#">
