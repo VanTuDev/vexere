@@ -7,7 +7,7 @@ import Loading from "../Loading/Loading";
 import { Card, Progress, Tooltip, Button, Statistic } from "antd";
 import "./Detail.css";
 
-const Detail = ({ trip }) => {
+const Detail = ({ item }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [dateTime, setDateTime] = useState("");
   const [selectedSeats, setSelectedSeats] = useState({});
@@ -60,7 +60,7 @@ const Detail = ({ trip }) => {
 
   const renderFloor = () => {
     let floorContent;
-    switch (parseInt(trip.seat)) {
+    switch (parseInt(item.seat)) {
       case 7:
         floorContent = (
           <table>
@@ -227,12 +227,15 @@ const Detail = ({ trip }) => {
             <Countdown value={Date.now() + 900000} format="mm:ss" />
           </div>
 
-          {trip && (
+          {item && (
             <div className="selected-trip-info">
               <h3>Thông tin chuyến đã chọn:</h3>
-              <p>Tên chuyến: {trip.name}</p> <p>Xe {trip.seat} chỗ</p>
-              <p>Ngày: {trip.date}</p>
-              <p>Giờ: {trip.time}</p>
+              <p>Tên chuyến: {item.title}</p> <p> {item.decription}</p>
+              <p>Giá ghế: {item.price}</p>
+              <p>Ngày: {item.date}</p>
+              <p>Giờ đi: {item.time1}</p>
+              <p>Điểm đón: {item.location1} </p>
+              <p>Điểm trả: {item.location2} </p>
             </div>
           )}
         </>

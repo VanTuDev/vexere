@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-// import Carousel from "./carousel";
+import Loading from "../Loading/Loading";
+import Detail from "../Booking/Detail";
+
 const data = [
   {
     id: 1,
@@ -10,9 +12,11 @@ const data = [
     imgUrl:
       "https://static.vexere.com/c/i/17359/xe-van-luc-tung-VeXeRe-cK0rzyB-1000x600.jpeg?w=250&h=250",
     time1: "16:15",
+    date: "2024-06-17",
     location1: "UK",
     time2: "16:17",
     location2: "UK",
+    seat: "7",
   },
   {
     id: 2,
@@ -23,11 +27,12 @@ const data = [
     imgUrl:
       "https://static.vexere.com/c/i/17359/xe-van-luc-tung-VeXeRe-cK0rzyB-1000x600.jpeg?w=250&h=250",
     time1: "15:00",
+    date: "2024-06-10",
     location1: "Hanoi",
     time2: "20:00",
     location2: "HCMC",
+    seat: "16",
   },
-  // Add more items as needed
   {
     id: 3,
     title: "Bus XYZ",
@@ -37,26 +42,87 @@ const data = [
     imgUrl:
       "https://static.vexere.com/c/i/17359/xe-van-luc-tung-VeXeRe-cK0rzyB-1000x600.jpeg?w=250&h=250",
     time1: "14:00",
+    date: "2024-06-20",
     location1: "Danang",
     time2: "19:00",
     location2: "HCMC",
+    seat: "30",
   },
 ];
 
 function Card() {
   const [selectedTrip, setSelectedTrip] = useState(null);
+  const [selectedTab, setSelectedTab] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isBooking, setIsBooking] = useState(false);
 
   const toggleDetails = (id) => {
-    setSelectedTrip(selectedTrip === id ? null : id);
+    if (selectedTrip === id && !isBooking) {
+      setSelectedTrip(null);
+    } else {
+      setSelectedTrip(id);
+      setIsBooking(false);
+    }
+    setSelectedTab(null);
+  };
+
+  const handleDetailClick = (id) => {
+    if (selectedTrip === id && isBooking) {
+      setSelectedTrip(null);
+      setIsBooking(false);
+    } else {
+      setIsLoading(true);
+      setTimeout(() => {
+        setSelectedTrip(id);
+        setIsBooking(true);
+        setIsLoading(false);
+      }, 150);
+    }
+  };
+
+  const renderTabContent = (tab, trip) => {
+    switch (tab) {
+      case "voucher":
+        return <div>Voucher giảm giá: 10% off for early birds!</div>;
+      case "pickup":
+        return (
+          <div>
+            <p>Điểm đón trả:</p>
+            <ul>
+              <li>Point A</li>
+              <li>Point B</li>
+              <li>Point C</li>
+            </ul>
+          </div>
+        );
+      case "reviews":
+        return (
+          <div>
+            <p>Đánh giá:</p>
+            <div>⭐⭐⭐⭐☆</div>
+            <p>Comment: Excellent service!</p>
+          </div>
+        );
+      case "images":
+        return (
+          <div>
+            Hình ảnh: <img src={trip.imgUrl} alt="Bus" />
+          </div>
+        );
+      case "amenities":
+        return <div>Tiện ích: WiFi, Snacks, Reclining Seats</div>;
+      default:
+        return null;
+    }
   };
 
   return (
-    <div className="w-9/12 ml-8 ">
+    <div className="w-9/12 ml-8">
       <div className="w-9/12 bg-slate-400">{/* carousel */}</div>
       {data.map((item) => (
         <div
           key={item.id}
-          className=" h-fit bg-white shadow-lg rounded-lg mt-6 px-1.5 py-5"
+          className="h-fit bg-white shadow-lg rounded-lg mt-6 px-1.5 py-5"
         >
           <div className="flex gap-2">
             <img
@@ -88,6 +154,7 @@ function Card() {
                     >
                       Thông tin chi tiết
                     </a>
+                    <Loading isLoading={isLoading} />
                     <button
                       style={{
                         background:
@@ -96,26 +163,67 @@ function Card() {
                       }}
                       className="h-8 w-3/12 mt-4 text-white rounded-lg"
                       type="button"
+                      onClick={() => handleDetailClick(item.id)}
                     >
-                      Gọi đặt vé
+                      {selectedTrip === item.id && isBooking
+                        ? "Đóng"
+                        : "Gọi đặt vé"}
                     </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          {selectedTrip === item.id && (
+          {selectedTrip === item.id && !isBooking && (
             <div className="mt-4 p-4 bg-gray-100 rounded-lg">
-              <div className=" flex gap-4 justify-between">
-                <a href="">Giảm giá</a>
-                <a href="">Điểm đón trả</a>
-                <a href="">Đánh giá</a>
-                <a href="">Hình ảnh </a>
-                <a href="">Tiện ích</a>
+              <div className="flex gap-4 justify-between">
+                <a
+                  className={`cursor-pointer ${
+                    selectedTab === "voucher" ? "font-bold" : ""
+                  }`}
+                  onClick={() => setSelectedTab("voucher")}
+                >
+                  Giảm giá
+                </a>
+                <a
+                  className={`cursor-pointer ${
+                    selectedTab === "pickup" ? "font-bold" : ""
+                  }`}
+                  onClick={() => setSelectedTab("pickup")}
+                >
+                  Điểm đón trả
+                </a>
+                <a
+                  className={`cursor-pointer ${
+                    selectedTab === "reviews" ? "font-bold" : ""
+                  }`}
+                  onClick={() => setSelectedTab("reviews")}
+                >
+                  Đánh giá
+                </a>
+                <a
+                  className={`cursor-pointer ${
+                    selectedTab === "images" ? "font-bold" : ""
+                  }`}
+                  onClick={() => setSelectedTab("images")}
+                >
+                  Hình ảnh
+                </a>
+                <a
+                  className={`cursor-pointer ${
+                    selectedTab === "amenities" ? "font-bold" : ""
+                  }`}
+                  onClick={() => setSelectedTab("amenities")}
+                >
+                  Tiện ích
+                </a>
               </div>
-              <div>
-                voucher giam giam
-              </div>
+              <div className="mt-4">{renderTabContent(selectedTab, item)}</div>
+            </div>
+          )}
+          {selectedTrip === item.id && isBooking && (
+            <div className="mt-4">
+              <Detail item={item} />
             </div>
           )}
         </div>
