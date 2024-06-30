@@ -1,3 +1,5 @@
 /node_modules
 task.md
 NPM.md
+.DS_Store
+.env
