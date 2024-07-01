@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import "./App.css";
+// import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MegaMenu from "./components/MegaMenu/MegaMenu";
 import Header from "./components/Header/Header";

@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Cửa Ông Limousine",
+    "price": "400.000 ",
+    "description": "Limousine giường nằm 34 chỗ",
+
+    "imgUrl": "https://static.vexere.com/c/i/17359/xe-van-luc-tung-VeXeRe-cK0rzyB-1000x600.jpeg?w=250&h=250",
+    "time1": "16:15",
+    "date": "2024-06-17",
+    "location1": "Dak Lak",
+    "time2": "16:17",
+    "location2": "Phu Yen",
+    "seat": "7"
+  }
+]
