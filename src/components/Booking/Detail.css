@@ -33,17 +33,18 @@
 
 .coach-container {
   margin-right: 16px;
-  text-align: center;
 }
 
 .coach {
   padding: 24px 12px 12px;
   background: #e6e6e6;
   border-radius: 25px 25px 5px 5px;
+ 
 }
 
 .coach table {
   border-collapse: collapse;
+   text-align: center;
 }
 
 .coach table .seat-container {
@@ -192,3 +193,7 @@ button {
     margin: 5px 0;
 }
 
+.Wheel {
+  margin-left: 10px;
+  margin-bottom: 3px;
+}
