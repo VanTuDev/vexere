@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiển thị JSON</title>
+</head>
+
+<body>
+    <div id="content"></div>
+
+    <script>
+        // Dữ liệu JSON của bạn
+        var jsonData = {
+            "transportStation": {
+                "_id": "6684fd6d05071de51cf150e6",
+                "name": "Duong thanh Phu 01010",
+                "address": "6684fd6d05071de51cf150e4",
+                "addressDetail": "Nothing to say !",
+                "email": "helloworld123@gmail.com",
+                "telephone": "0974421442",
+                "images": [],
+                "status": "start",
+                "createAt": "2024-07-03T07:27:41.822Z",
+                "__v": 0
+            },
+            "licenses": [
+                {
+                    "_id": "66851fb5f388eb7e32ea590c",
+                    "name": "sample 2",
+                    "purpose": "nothing",
+                    "image_preview": {
+                        "_id": "66851fb5f388eb7e32ea5904",
+                        "filename": "1720000437280_pexels-jonaorle-3828241.jpg",
+                        "path": "c:\\images\\1720000437361_366008250_6029674610472484_1073224162148415568_n.jpg",
+                        "createAt": "2024-07-03T09:53:57.454Z",
+                        "updateAt": "2024-07-03T09:53:57.454Z",
+                        "__v": 0
+                    },
+                    "create_at": "2024-07-03T09:53:57.469Z",
+                    "__v": 0
+                },
+                {
+                    "_id": "66851fb5f388eb7e32ea590b",
+                    "name": "sample 1",
+                    "purpose": "nothing",
+                    "image_preview": {
+                        "_id": "66851fb5f388eb7e32ea5903",
+                        "filename": "1720000437280_pexels-jonaorle-3828241.jpg",
+                        "path": "c:\\images\\1720000437280_pexels-jonaorle-3828241.jpg",
+                        "createAt": "2024-07-03T09:53:57.452Z",
+                        "updateAt": "2024-07-03T09:53:57.452Z",
+                        "__v": 0
+                    },
+                    "create_at": "2024-07-03T09:53:57.468Z",
+                    "__v": 0
+                },
+                {
+                    "_id": "66851fb5f388eb7e32ea590e",
+                    "name": "sample 4",
+                    "purpose": "nothing",
+                    "image_preview": {
+                        "_id": "66851fb5f388eb7e32ea5906",
+                        "filename": "1720000437280_pexels-jonaorle-3828241.jpg",
+                        "createAt": "2024-07-03T09:53:57.454Z",
+                        "updateAt": "2024-07-03T09:53:57.454Z",
+                        "__v": 0
+                    },
+                    "create_at": "2024-07-03T09:53:57.469Z",
+                    "__v": 0
+                },
+                {
+                    "_id": "66851fb5f388eb7e32ea590d",
+                    "name": "sample 3",
+                    "purpose": "nothing",
+                    "image_preview": {
+                        "_id": "66851fb5f388eb7e32ea5905",
+                        "filename": "1720000437280_pexels-jonaorle-3828241.jpg",
+                        "path": "c:\\images\\1720000437435_366008250_6029674610472484_1073224162148415568_n.jpg",
+                        "createAt": "2024-07-03T09:53:57.454Z",
+                        "updateAt": "2024-07-03T09:53:57.454Z",
+                        "__v": 0
+                    },
+                    "create_at": "2024-07-03T09:53:57.469Z",
+                    "__v": 0
+                }
+            ]
+        };
+
+        // Lấy phần tử div để hiển thị dữ liệu
+        var contentDiv = document.getElementById('content');
+
+        // Hiển thị thông tin trong JSON lên trang web
+        contentDiv.innerHTML = '<pre>' + JSON.stringify(jsonData, null, 2) + '</pre>';
+    </script>
+</body>
+
+</html>

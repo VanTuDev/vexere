@@ -69,7 +69,7 @@ exports.initAddress = async (req, res, next) => {
 exports.getAllProvince = async (req, res, next) => {
     try {
         const provinces = await Province.find()
-        res.json(provinces);
+        res.status(200).json(provinces);
     } catch (err) {
         console.error('Error fetching provinces:', err);
         res.status(500).json({ error: 'Internal server error' });
@@ -78,10 +78,9 @@ exports.getAllProvince = async (req, res, next) => {
 
 exports.getProvinceByCode = async (req, res, next) => {
     const provinceCode = req.params.provinceCode
-    console.log(provinceCode)
     try {
         const provinces = await Province.findOne({Code: provinceCode})
-        res.json(provinces);
+        res.status(200).json(provinces);
     } catch (err) {
         console.error('Error fetching provinces:', err);
         res.status(500).json({ error: 'Internal server error' });
@@ -105,10 +104,8 @@ exports.getDistrictsByProvince = async (req, res, next) => {
 
 exports.getWardByDistrict = async (req, res, next) => {
     const districtCode = req.params.districtCode;
-    console.log(districtCode)
     try {
         let wards = await Ward.find({DistrictCode: districtCode})
-        console.log(wards)
         res.status(200).json({
             wards: wards
         })

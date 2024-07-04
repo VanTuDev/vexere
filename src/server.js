@@ -10,6 +10,8 @@ const {config} = require('./config')
 // routes
 const userRoutes  = require('./user/user-routes')
 const addressRoutes = require('./address/address-routes')
+const transportStationRoutes = require('./transport-station/transport-station-routes')
+const licenseRoutes = require('./transport-station/license/license-routes')
 
 mongoose.connect(config.database.name)
 .then(() => {
@@ -24,10 +26,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api/v1/user',userRoutes())
 app.use('/api/v1/address',addressRoutes())
-
+app.use('/api/v1/transport-station',transportStationRoutes())
+    app.use('/api/v1/license',licenseRoutes())
 app.listen(process.env.PORT, async () => {
     logger.info(`\n ${await decode2String()}`);
     logger.info(`Server is running on port ${process.env.PORT}`) 
 });
-
-

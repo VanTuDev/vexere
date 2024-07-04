@@ -96,4 +96,6 @@ exports.getById = async (req, res, next) => {
     }
 };
 
-
+exports.loginByThirdParty = async (req, res, next) => {
+    
+}

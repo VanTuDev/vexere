@@ -1,11 +1,59 @@
-## Installation
-To get started, follow these steps:
-1. Clone the repository:
-git clone -b beetlejuice https://github.com/VanTuDev/vexere.git
-2. Initialize npm:
-npm init --y
-3. Install dependencies:
-npm install --save
-## Usage
-npm run express
+## About
+    Vexere 
 
+### Installation
+
+```	
+> [!STEP1]
+> git clone -b beetlejuice https://github.com/VanTuDev/vexere.git
+```
+```
+> [!STEP2]
+> npm init --y
+```	
+```
+> [!STEP3]
+> npm install --save
+```
+### Note :eyes:
+This project dont have .env file, plz create follow these step:
+1. Create .env file follow this structure :
+    ```
+        -src
+        |--- config.js
+        |--- server.js
+        |--- .env 
+    ```
+2. Set up file .env: 
+    ```
+        // This data is a sample. U need to replace a value is your config .
+        PORT= "3000"
+        MONGODB = "mongodb://localhost:27017/vexere"
+        MYSQL_URL = ""
+        DRIVER = "c:/"
+        JWT_SECRET=0BB791B0AD60DE88B3BEBAC1E0FDD8815AC70904751B1BB3A20FADAE35E024B6
+        JWT_REFRESH=a1271215bf516bb2d14c 
+        JWT_EXPIRES_IN=2y
+        JWT_REFRESH_EXPIRES_IN=3y
+    ```
+ 3. Change Path in config.js file:
+    ```
+        require('dotenv').config({ path: './src/.env'})
+        const config = {
+            port: process.env.PORT,
+            database: {
+                name:   process.env.MONGODB,
+                username:   '',
+                password:   ''
+            },
+            storage:{
+                driver:process.env.DRIVER
+            },
+        }
+        module.exports = { config }; 
+    ```   
+    
+### Usage :trollface:
+    ```
+        npm run express
+    ```
