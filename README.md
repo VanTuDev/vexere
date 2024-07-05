@@ -20,7 +20,7 @@ This project dont have .env file, plz create follow these step:
     ```
 2. Set up file .env: 
     ```
-        // This data is a sample. U need to replace a value is your config .
+        // This data is a sample. You need to replace a value with your config .
         PORT= "3000"
         MONGODB = "mongodb://localhost:27017/vexere"
         MYSQL_URL = ""
@@ -48,10 +48,11 @@ This project dont have .env file, plz create follow these step:
    ```   
     
 ### Usage :trollface:
+
     ```
         npm run express
     ```
 
 ### My Favourite API Test  : YAAK      
-   >[Install UI test by click here ](https://yaak.app/download).
+>[Install UI test by click here ](https://yaak.app/download).
     
