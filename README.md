@@ -46,8 +46,8 @@ This project dont have .env file, plz create follow these step:
         }
         module.exports = { config }; 
    ```   
-### Note 
 
+### Note 
 >npm run express
     
 
