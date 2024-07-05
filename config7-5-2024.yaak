@@ -1,0 +1,522 @@
+{
+  "yaakVersion": "2024.6.6",
+  "yaakSchema": 2,
+  "timestamp": "2024-07-05T16:21:29.700573800",
+  "resources": {
+    "workspaces": [
+      {
+        "id": "wk_cjcrAW8kbP",
+        "model": "workspace",
+        "createdAt": "2024-06-28T06:57:41",
+        "updatedAt": "2024-06-28T06:57:41",
+        "name": "Yaak",
+        "description": "",
+        "variables": [],
+        "settingValidateCertificates": true,
+        "settingFollowRedirects": true,
+        "settingRequestTimeout": 0
+      }
+    ],
+    "environments": [],
+    "folders": [
+      {
+        "createdAt": "2024-06-28T06:58:53",
+        "updatedAt": "2024-06-28T06:58:53",
+        "id": "fl_ASn015KNkX",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": null,
+        "model": "folder",
+        "name": "VEXERE",
+        "sortPriority": -1719557933192.0
+      },
+      {
+        "createdAt": "2024-06-28T06:59:01",
+        "updatedAt": "2024-06-28T07:00:15",
+        "id": "fl_jEjW761soO",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_ASn015KNkX",
+        "model": "folder",
+        "name": "Address",
+        "sortPriority": 1000.0
+      },
+      {
+        "createdAt": "2024-06-28T06:59:12",
+        "updatedAt": "2024-06-28T07:00:15",
+        "id": "fl_GwCWvpjq2w",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_ASn015KNkX",
+        "model": "folder",
+        "name": "User",
+        "sortPriority": 0.0
+      },
+      {
+        "createdAt": "2024-06-28T07:12:49",
+        "updatedAt": "2024-07-01T15:45:37",
+        "id": "fl_dhTIjZPNEK",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_ASn015KNkX",
+        "model": "folder",
+        "name": "Transport-Station",
+        "sortPriority": -1719558769655.0
+      },
+      {
+        "createdAt": "2024-07-03T09:38:16",
+        "updatedAt": "2024-07-03T09:38:16",
+        "id": "fl_FpH9ioKOAI",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_dhTIjZPNEK",
+        "model": "folder",
+        "name": "License",
+        "sortPriority": -1719999496099.0
+      },
+      {
+        "createdAt": "2024-07-04T13:28:11",
+        "updatedAt": "2024-07-04T13:28:11",
+        "id": "fl_v4nPEDyC9l",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_FpH9ioKOAI",
+        "model": "folder",
+        "name": "CCM",
+        "sortPriority": -1720099691620.0
+      },
+      {
+        "createdAt": "2024-07-05T05:27:15",
+        "updatedAt": "2024-07-05T05:27:15",
+        "id": "fl_IyMtbw8vJW",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_ASn015KNkX",
+        "model": "folder",
+        "name": "Image",
+        "sortPriority": -1720157235879.0
+      }
+    ],
+    "httpRequests": [
+      {
+        "createdAt": "2024-06-28T06:59:27",
+        "updatedAt": "2024-07-05T16:09:05",
+        "id": "rq_V3ca9pDKbZ",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_GwCWvpjq2w",
+        "model": "http_request",
+        "sortPriority": 3000.0,
+        "name": "Sign-in",
+        "url": "http://localhost:3000/api/v1/user/signin",
+        "urlParameters": [],
+        "method": "POST",
+        "body": {
+          "text": "{\n  \"username\": \"ea3652132f\",\n  \"password\": \"3732cc7926\"\n}"
+        },
+        "bodyType": "application/json",
+        "authentication": {
+          "token": ""
+        },
+        "authenticationType": "bearer",
+        "headers": [
+          {
+            "enabled": true,
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      },
+      {
+        "createdAt": "2024-06-28T07:00:21",
+        "updatedAt": "2024-06-29T09:58:59",
+        "id": "rq_y8qi4vty5N",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_jEjW761soO",
+        "model": "http_request",
+        "sortPriority": 1000.0,
+        "name": "Gell All Province",
+        "url": "http://localhost:3000/api/v1/address/provinces/01",
+        "urlParameters": [],
+        "method": "GET",
+        "body": {
+          "text": ""
+        },
+        "bodyType": "application/json",
+        "authentication": {},
+        "authenticationType": null,
+        "headers": [
+          {
+            "enabled": true,
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      },
+      {
+        "createdAt": "2024-06-28T07:00:49",
+        "updatedAt": "2024-06-29T08:24:43",
+        "id": "rq_3aK1cAWLHT",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_jEjW761soO",
+        "model": "http_request",
+        "sortPriority": 0.0,
+        "name": "Init Address",
+        "url": "http://localhost:3000/api/v1/address/init",
+        "urlParameters": [],
+        "method": "GET",
+        "body": {},
+        "bodyType": null,
+        "authentication": {},
+        "authenticationType": null,
+        "headers": []
+      },
+      {
+        "createdAt": "2024-06-28T07:01:50",
+        "updatedAt": "2024-07-01T15:38:19",
+        "id": "rq_JUQDCkJrSl",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_jEjW761soO",
+        "model": "http_request",
+        "sortPriority": 3000.0,
+        "name": "getDistrictsByProvince",
+        "url": "http://localhost:3000/api/v1/address/districts/01",
+        "urlParameters": [],
+        "method": "GET",
+        "body": {},
+        "bodyType": null,
+        "authentication": {},
+        "authenticationType": null,
+        "headers": []
+      },
+      {
+        "createdAt": "2024-06-28T07:01:56",
+        "updatedAt": "2024-07-01T15:38:29",
+        "id": "rq_e1N0j9y6fX",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_jEjW761soO",
+        "model": "http_request",
+        "sortPriority": 4000.0,
+        "name": "getWardByDistrict",
+        "url": "http://localhost:3000/api/v1/address/wards/001",
+        "urlParameters": [],
+        "method": "GET",
+        "body": {},
+        "bodyType": null,
+        "authentication": {},
+        "authenticationType": null,
+        "headers": []
+      },
+      {
+        "createdAt": "2024-06-29T08:24:30",
+        "updatedAt": "2024-07-01T15:38:15",
+        "id": "rq_wOppUTQLXD",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_jEjW761soO",
+        "model": "http_request",
+        "sortPriority": 2000.0,
+        "name": "Get Province By Code",
+        "url": "http://localhost:3000/api/v1/address/provinces/01",
+        "urlParameters": [],
+        "method": "GET",
+        "body": {},
+        "bodyType": null,
+        "authentication": {},
+        "authenticationType": null,
+        "headers": []
+      },
+      {
+        "createdAt": "2024-06-29T09:43:30",
+        "updatedAt": "2024-07-05T16:12:00",
+        "id": "rq_Qc8mqVeq6Q",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_GwCWvpjq2w",
+        "model": "http_request",
+        "sortPriority": 1000.0,
+        "name": "Get all",
+        "url": "http://localhost:3000/api/v1/user",
+        "urlParameters": [],
+        "method": "GET",
+        "body": {},
+        "bodyType": null,
+        "authentication": {
+          "token": ""
+        },
+        "authenticationType": "bearer",
+        "headers": []
+      },
+      {
+        "createdAt": "2024-06-30T05:34:54",
+        "updatedAt": "2024-07-01T05:46:42",
+        "id": "rq_2PVpkjAAP1",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_GwCWvpjq2w",
+        "model": "http_request",
+        "sortPriority": 2000.0,
+        "name": "Refresh",
+        "url": "http://localhost:3000/api/v1/user/refresh",
+        "urlParameters": [],
+        "method": "POST",
+        "body": {},
+        "bodyType": null,
+        "authentication": {
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjY4MjQyOTQzOGQwNjM3MTAxOTY2ZDljIn0sImlhdCI6MTcxOTgxMjc1NiwiZXhwIjoxODE0NDg1NTU2fQ.uXv-PQ8RUmbi8XaR9aJR8Rj3Z0zWmS_g9-EEBaVmIJQ"
+        },
+        "authenticationType": "bearer",
+        "headers": []
+      },
+      {
+        "createdAt": "2024-07-01T15:45:39",
+        "updatedAt": "2024-07-05T16:15:20",
+        "id": "rq_0DhbJcjclw",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_dhTIjZPNEK",
+        "model": "http_request",
+        "sortPriority": 4000.0001,
+        "name": "Register Transport",
+        "url": "http://localhost:3000/api/v1/transport-station/register",
+        "urlParameters": [],
+        "method": "POST",
+        "body": {
+          "form": [
+            {
+              "enabled": true,
+              "name": "name",
+              "value": "Duong thanh phu 111"
+            },
+            {
+              "enabled": true,
+              "name": "provinceCode",
+              "value": "667fc3e09e17164772445015"
+            },
+            {
+              "enabled": true,
+              "name": "districtCode",
+              "value": "667fc3e09e17164772445017"
+            },
+            {
+              "enabled": true,
+              "name": "wardCode",
+              "value": "667fc3e09e17164772445019"
+            },
+            {
+              "enabled": true,
+              "name": "addressDetail",
+              "value": "...."
+            },
+            {
+              "enabled": true,
+              "name": "email",
+              "value": "djbeetlejuice808@gmail.com"
+            },
+            {
+              "enabled": true,
+              "name": "telephone",
+              "value": "0973321223"
+            },
+            {
+              "enabled": true,
+              "name": "",
+              "value": ""
+            }
+          ]
+        },
+        "bodyType": "application/x-www-form-urlencoded",
+        "authentication": {},
+        "authenticationType": null,
+        "headers": [
+          {
+            "enabled": true,
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      {
+        "createdAt": "2024-07-02T12:57:02",
+        "updatedAt": "2024-07-05T10:30:41",
+        "id": "rq_cPUxG2fnQr",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_dhTIjZPNEK",
+        "model": "http_request",
+        "sortPriority": 4000.0002,
+        "name": "Get By ID",
+        "url": "http://localhost:3000/api/v1/transport-station/confirmInformation/6687c5fec375c7f1d7a1ec12",
+        "urlParameters": [],
+        "method": "GET",
+        "body": {
+          "form": [
+            {
+              "enabled": false,
+              "name": "images",
+              "file": "C:\\Users\\duong\\Downloads\\Ảnh để test\\1.jpg"
+            },
+            {
+              "enabled": false,
+              "name": "images",
+              "file": "C:\\Users\\duong\\Downloads\\Ảnh để test\\2.jpg"
+            },
+            {
+              "enabled": false,
+              "name": "images",
+              "file": "C:\\Users\\duong\\Downloads\\Ảnh để test\\3.jpg"
+            },
+            {
+              "enabled": false,
+              "name": "images",
+              "file": "C:\\Users\\duong\\Downloads\\Ảnh để test\\4.jpg"
+            },
+            {
+              "enabled": true,
+              "name": "",
+              "value": ""
+            }
+          ]
+        },
+        "bodyType": "multipart/form-data",
+        "authentication": {},
+        "authenticationType": null,
+        "headers": []
+      },
+      {
+        "createdAt": "2024-07-03T15:59:40",
+        "updatedAt": "2024-07-04T06:05:51",
+        "id": "rq_4ftyVEzPbp",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_FpH9ioKOAI",
+        "model": "http_request",
+        "sortPriority": 4000.0003,
+        "name": "Init",
+        "url": "http://localhost:3000/api/v1/license/init",
+        "urlParameters": [],
+        "method": "GET",
+        "body": {},
+        "bodyType": null,
+        "authentication": {},
+        "authenticationType": null,
+        "headers": []
+      },
+      {
+        "createdAt": "2024-07-04T11:22:38",
+        "updatedAt": "2024-07-05T16:08:33",
+        "id": "rq_703R8Sfd0e",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_dhTIjZPNEK",
+        "model": "http_request",
+        "sortPriority": 4000.0002,
+        "name": "All Done",
+        "url": "http://localhost:3000/api/v1/transport-station/allDone/66881a6c1f4530d0b11b08a8",
+        "urlParameters": [],
+        "method": "POST",
+        "body": {
+          "form": [
+            {
+              "enabled": true,
+              "name": "images",
+              "file": "C:\\Users\\duong\\Downloads\\Ảnh để test\\1.jpg"
+            },
+            {
+              "enabled": true,
+              "name": "images",
+              "file": "C:\\Users\\duong\\Downloads\\Ảnh để test\\2.jpg"
+            },
+            {
+              "enabled": true,
+              "name": "images",
+              "file": "C:\\Users\\duong\\Downloads\\Ảnh để test\\3.jpg"
+            },
+            {
+              "enabled": true,
+              "name": "images",
+              "file": "C:\\Users\\duong\\Downloads\\Ảnh để test\\4.jpg"
+            },
+            {
+              "enabled": true,
+              "name": "",
+              "value": ""
+            }
+          ]
+        },
+        "bodyType": "multipart/form-data",
+        "authentication": {},
+        "authenticationType": null,
+        "headers": []
+      },
+      {
+        "createdAt": "2024-07-04T13:28:14",
+        "updatedAt": "2024-07-04T13:56:28",
+        "id": "rq_pzt4J46yqm",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_v4nPEDyC9l",
+        "model": "http_request",
+        "sortPriority": 4000.0003,
+        "name": "Get all ccm",
+        "url": "http://localhost:3000/api/v1/license/ccm",
+        "urlParameters": [],
+        "method": "GET",
+        "body": {},
+        "bodyType": null,
+        "authentication": {},
+        "authenticationType": null,
+        "headers": []
+      },
+      {
+        "createdAt": "2024-07-05T05:27:02",
+        "updatedAt": "2024-07-05T09:41:02",
+        "id": "rq_O0aAi5wEh2",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_IyMtbw8vJW",
+        "model": "http_request",
+        "sortPriority": 0.0,
+        "name": "Image",
+        "url": "http://localhost:3000/api/v1/images/C:\\images\\1720172375575_1.jpg",
+        "urlParameters": [],
+        "method": "GET",
+        "body": {},
+        "bodyType": null,
+        "authentication": {},
+        "authenticationType": null,
+        "headers": []
+      },
+      {
+        "createdAt": "2024-07-05T12:37:20",
+        "updatedAt": "2024-07-05T12:39:53",
+        "id": "rq_i5HYpoaNCO",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_GwCWvpjq2w",
+        "model": "http_request",
+        "sortPriority": 3000.0001,
+        "name": "Sign-up",
+        "url": "http://localhost:3000/api/v1/user/signup",
+        "urlParameters": [],
+        "method": "POST",
+        "body": {
+          "text": ""
+        },
+        "bodyType": "application/json",
+        "authentication": {},
+        "authenticationType": null,
+        "headers": [
+          {
+            "enabled": true,
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      {
+        "createdAt": "2024-07-05T14:06:54",
+        "updatedAt": "2024-07-05T16:09:43",
+        "id": "rq_jH4ZmztZ9N",
+        "workspaceId": "wk_cjcrAW8kbP",
+        "folderId": "fl_GwCWvpjq2w",
+        "model": "http_request",
+        "sortPriority": 1000.0001,
+        "name": "Get by id",
+        "url": "http://localhost:3000/api/v1/user/66881a831f4530d0b11b08b1",
+        "urlParameters": [],
+        "method": "GET",
+        "body": {},
+        "bodyType": null,
+        "authentication": {
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjY4ODFhODMxZjQ1MzBkMGIxMWIwOGIxIiwidXNlcm5hbWUiOiJlYTM2NTIxMzJmIiwicm9sZSI6InVzZXIifSwiaWF0IjoxNzIwMTk1NzE1LCJleHAiOjE3ODMzMTA5MTV9.uyyEpMzkY2LhsbmXQSrUlz5vQistADb-ynY3ZXjiTUY"
+        },
+        "authenticationType": "bearer",
+        "headers": []
+      }
+    ],
+    "grpcRequests": []
+  }
+}
