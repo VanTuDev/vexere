@@ -3,14 +3,14 @@
 
 ### Installation
 
+>>```
+    git clone -b beetlejuice https://github.com/VanTuDev/vexere.git
 ```
->> git clone -b beetlejuice https://github.com/VanTuDev/vexere.git
-```
-```
->> npm init --y
+>>```
+    npm init --y
 ```	
-```
->> npm install --save
+>>```
+    npm install --save
 ```
 ### Note :eyes:
 This project dont have .env file, plz create follow these step:
@@ -56,5 +56,5 @@ This project dont have .env file, plz create follow these step:
     ```
 
 ### My Favourite API Test  : YAAK      
->[Install UI test by click here ](https://yaak.app/download).
+   >[Install UI test by click here ](https://yaak.app/download).
     
