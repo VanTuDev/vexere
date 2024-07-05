@@ -48,9 +48,8 @@ This project dont have .env file, plz create follow these step:
    ```   
 ### Usage :trollface:
 
-    ```
-        npm run express
-    ```
+>npm run express
+    
 
 ### My Favourite API Test  : YAAK      
 >[Install UI test by click here ](https://yaak.app/download).
