@@ -3,15 +3,12 @@
 
 ### Installation
 
->>```
-    git clone -b beetlejuice https://github.com/VanTuDev/vexere.git
-```
->>```
-    npm init --y
-```	
->>```
-    npm install --save
-```
+>git clone -b beetlejuice https://github.com/VanTuDev/vexere.git
+
+>>npm init --y
+
+>>>npm install --save
+
 ### Note :eyes:
 This project dont have .env file, plz create follow these step:
 1. Create .env file follow this structure :
