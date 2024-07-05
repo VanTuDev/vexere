@@ -3,12 +3,15 @@
 
 ### Installation
 
->git clone -b beetlejuice https://github.com/VanTuDev/vexere.git
-
->>npm init --y
-
->>>npm install --save
-
+```
+>> git clone -b beetlejuice https://github.com/VanTuDev/vexere.git
+```
+```
+>> npm init --y
+```	
+```
+>> npm install --save
+```
 ### Note :eyes:
 This project dont have .env file, plz create follow these step:
 1. Create .env file follow this structure :
@@ -20,7 +23,7 @@ This project dont have .env file, plz create follow these step:
     ```
 2. Set up file .env: 
     ```
-        // This data is a sample. You need to replace a value with your config .
+        // This data is a sample. U need to replace a value is your config .
         PORT= "3000"
         MONGODB = "mongodb://localhost:27017/vexere"
         MYSQL_URL = ""
@@ -46,10 +49,11 @@ This project dont have .env file, plz create follow these step:
         }
         module.exports = { config }; 
    ```   
-
-### Note 
->npm run express
     
+### Usage :trollface:
+    ```
+        npm run express
+    ```
 
 ### My Favourite API Test  : YAAK      
 >[Install UI test by click here ](https://yaak.app/download).
