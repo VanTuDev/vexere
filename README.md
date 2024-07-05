@@ -46,7 +46,6 @@ This project dont have .env file, plz create follow these step:
         }
         module.exports = { config }; 
    ```   
-    
 ### Usage :trollface:
 
     ```
