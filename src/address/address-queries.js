@@ -17,7 +17,7 @@ exports.createAddress = (provinceId, districtId, wardId) => {
 
 exports.updateUserIdInAddress = async (addressId, userId) => {
     try {
-        const updatedAddress = await Address.findByIdAndUpdate(
+        const updatedAddress = await address.findByIdAndUpdate(
             addressId,
             { userId: userId },
             { new: true } // This option returns the modified document rather than the original

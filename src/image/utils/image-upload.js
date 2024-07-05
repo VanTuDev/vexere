@@ -31,7 +31,7 @@ const injectSVG = async (req, res, next) => {
     }
 
     try {
-        const svgPath = extensionFs.joinPath(__dirname, 'vexere-logo.svg');
+        const svgPath = extensionFs.joinPath(__dirname, 'vexere.svg');
         const svgBuffer = fs.readFileSync(svgPath);
         const outputDir = extensionFs.joinPath(extensionFs.config.driver, 'images');
         extensionFs.io.createDir(outputDir);

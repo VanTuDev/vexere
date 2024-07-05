@@ -4,7 +4,8 @@ const transportStationSchema = new mongoose.Schema({
     userId:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: false
+        required: false,
+        default: new mongoose.Types.ObjectId('569ed8269353e9f4c51617aa')
     },  
     name: {
         type: String,

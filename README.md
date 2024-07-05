@@ -4,15 +4,12 @@
 ### Installation
 
 ```	
-> [!STEP1]
 > git clone -b beetlejuice https://github.com/VanTuDev/vexere.git
 ```
 ```
-> [!STEP2]
 > npm init --y
 ```	
 ```
-> [!STEP3]
 > npm install --save
 ```
 ### Note :eyes:

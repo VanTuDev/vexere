@@ -38,6 +38,7 @@ exports.createLicenses = async (licenses) => {
 exports.getAll = async () => {
     try {
         const licenses = await licenseQuery.getAll()
+        
         return licenses
     }catch(error){
         console.error(error);
@@ -56,7 +57,7 @@ exports.init = async (licenses) => {
             path: file.path
         }));
         const savedImages = await imageService.createImages(images);
-        // Sử dụng Promise.all() để đợi tất cả các promise hoàn thành
+
         await Promise.all(savedImages.map(async (image, index) => {
             const license = licenses[index % licenses.length]; // Lấy giấy phép theo chỉ số ảnh
             const newLicense = {
