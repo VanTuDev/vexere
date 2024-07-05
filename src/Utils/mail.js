@@ -20,9 +20,18 @@ function createTransporter(host, port, secure, auth) {
     });
 }
 
-exports.sendEmail = async (to, subject, transportStationId) => {
-    let htmlContent = fs.readFileSync('src/Utils/mailtemplate.html', 'utf8');
-    htmlContent = htmlContent.replace('${transportStationId}', transportStationId);
+exports.sendEmail = async (to, subject, transportStationId, confirm,username,password) => {
+    let htmlContent;
+    
+    if (!confirm) {
+        htmlContent = fs.readFileSync('src/Utils/mailtemplate.html', 'utf8');
+        htmlContent = htmlContent.replace('${transportStationId}', transportStationId);
+    }else{
+        htmlContent = fs.readFileSync('src/Utils/account.html', 'utf8');
+        htmlContent = htmlContent.replace('${username}', username);
+        htmlContent = htmlContent.replace('${password}', password);
+        console.log(htmlContent)
+    }
     const transporter = createTransporter(mailConfig.host, mailConfig.port, mailConfig.secure, mailConfig.auth);
     try {
         const info = await transporter.sendMail({

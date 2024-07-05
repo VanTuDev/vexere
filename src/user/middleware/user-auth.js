@@ -29,9 +29,7 @@ const authentication = async (req, res, next) => {
 
     try {
         const userFromToken = decodedToken.payload;
-        console.log(userFromToken.id)
         const userFromServer = await User.findById({_id: userFromToken.id});
-        console.log(userFromServer)
         if (userFromServer === null) {
             return res.status(401).json({
                 message: "Cannot find user!"
@@ -48,6 +46,7 @@ const authentication = async (req, res, next) => {
 
 const authorize = (requiredRoles) => {
     return (req, res, next) => {
+        // Check if user is authenticated
         if (!req.user) {
             return res.status(401).json({
                 message: "User not authenticated"
@@ -55,12 +54,13 @@ const authorize = (requiredRoles) => {
         }
         
         const userRole = req.user.role;
+
         if (!requiredRoles.includes(userRole)) {
             return res.status(403).json({
-                message: `You don't have the required permissions to access this route`
+                message: "You don't have the required permissions to access this route"
             });
         }
-        
+
         next();
     };
 };

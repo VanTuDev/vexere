@@ -2,7 +2,7 @@ const User = require('./user-model');
 const Token = require('./token/token-model');
 
 exports.findUserByUsername = async (username) => {
-    return User
+    return await User
         .findOne({ username })
         .populate({
             path: 'tokens',
@@ -18,15 +18,15 @@ exports.findUserByUsername = async (username) => {
 
 exports.createUser = async (userData) => {
     const user = new User(userData);
-    return user.save();
+    return await user.save();
 };
 
 exports.findUserById = async (id) => {
-    return User.findById(id);
+    return await User.findById(id);
 };
 
 exports.findUserByRefreshToken = async (decodedId, refreshToken) => {
-    return User.findOne({ _id: decodedId })
+    return await User.findOne({ _id: decodedId })
         .populate({
             path: 'tokens',
             model: 'Token',
@@ -40,7 +40,7 @@ exports.findUserByRefreshToken = async (decodedId, refreshToken) => {
 };
 
 exports.getAllUsers = async () => {
-    return User.find()
+    return await User.find()
         .populate({
             path: 'tokens',
             model: 'Token',
@@ -53,12 +53,20 @@ exports.getAllUsers = async () => {
 
 exports.saveToken = async (tokenData) => {
     const token = new Token(tokenData);
-    return token.save();
+    return await token.save();
 };
 
 exports.revokeOldAccessTokens = async (userId, newTokenId) => {
-    return Token.updateMany(
+    return await Token.updateMany(
         { user: userId, type: 'access', _id: { $ne: newTokenId } },
         { $set: { revoked: true } }
     );
 };
+exports.findUserByIdAndUpadate= async (userId, content) => {
+    try {
+        const user = await User.findByIdAndUpdate(userId,content)
+        return user
+    }catch(error){
+        throw "Cannot update user"
+    }
+}

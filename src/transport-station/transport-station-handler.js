@@ -7,6 +7,7 @@ const Joi = require('joi');
 const licenseService = require('./license/license-service')
 const userService = require('../user/user-service')
 const utils = require('../Utils/Random')
+const mail = require('../Utils/mail');
 
 const registerTransportStationSchema = Joi.object({
     name: Joi.string().required().messages({
@@ -105,7 +106,7 @@ exports.finshedProcessRegister = async (req, res, next) => {
                 password: utils.generateRandomString(10)
             }
             userSaved = await userService.createUser(user.username, user.password);
-        
+            await userService.findUserByIdAndUpdate(userSaved._id,'transport-station')
         
         
         try {
@@ -164,12 +165,10 @@ exports.finshedProcessRegister = async (req, res, next) => {
                 message: 'Error creating license CMM',
                 error: error.message,
             });
-        }
-
+        }        
+        await mail.sendEmail(transportStationFromServer.email,"This is your account !",transportStationFromServer._id, true,userSaved.username,user.password);
         return res.status(200).json({
-            user: { username: userSaved.username,
-                    password: user.password 
-            },
+            message: "Bạn đã đăng ký thành công ! Vui lòng kiểm tra email để nhận Tài khoản và mật khẩu"
         });
     } catch (error) {
         console.error(error);

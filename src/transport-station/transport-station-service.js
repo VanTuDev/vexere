@@ -40,7 +40,7 @@ exports.registerTransportStation = async (name, provincesCode, districtCode, war
             telephone: telephone
         });
         let mailFromClient = email;
-        await mail.sendEmail(mailFromClient, "Vui lòng xác nhận thông tin !", transportStation._id);
+        await mail.sendEmail(mailFromClient, "Vui lòng xác nhận thông tin !", transportStation._id,false,null,null);
         return transportStation;
     } catch (error) {
         console.error(error);

@@ -5,7 +5,8 @@ const {
     findUserByRefreshToken, 
     getAllUsers, 
     saveToken, 
-    revokeOldAccessTokens 
+    revokeOldAccessTokens,
+    findUserByIdAndUpadate
 } = require('./user-queries');
 
 const {   
@@ -113,3 +114,27 @@ exports.refreshAccessToken = async (user, refreshToken) => {
 exports.getAllUsers = getAllUsers;
 
 exports.getUserById = findUserById;
+
+exports.findUserByIdAndUpdate = async (userId, newRole) => {
+    const validRoles = ['user', 'admin', 'transport-station'];
+    if (!validRoles.includes(newRole)) {
+        throw new Error('Invalid role provided');
+    }
+
+    try {
+        const updatedUser = await findUserByIdAndUpadate(
+            userId,
+            { role: newRole },
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedUser) {
+            throw new Error('User not found');
+        }
+
+        return updatedUser;
+    } catch (error) {
+        console.error('Error updating user role:', error);
+        throw error;
+    }
+}
