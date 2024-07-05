@@ -29,23 +29,19 @@ exports.signup = async (req, res, next) => {
 exports.signin = async (req, res, next) => {
     try {
         const { error } = userJoiSchema.validate(req.body, { abortEarly: false });
-
         if (error) {
             const errorMessages = error.details.map(detail => detail.message);
             return res.status(400).json({ errors: errorMessages });
         }
-
         const { username, password } = req.body;
-
         const userFromServer = await userService.findUserByUsername(username);
         if (!userFromServer) {
             return res.status(400).json({ error: 'Username does not exist.' });
         }
-
         const verifySuccess = await userService.verifyUserPassword(userFromServer, password);
-
         if (verifySuccess) {
             return res.status(200).json({
+                _id: userFromServer._id,
                 username: userFromServer.username,
                 accessToken: userFromServer.tokens,
                 refreshToken: userFromServer.refreshTokens
@@ -85,7 +81,7 @@ exports.getAllUser = async (req, res, next) => {
 
 exports.getById = async (req, res, next) => {
     try {
-        const user = await userService.getUserById(req.params.id);
+        const user = await userService.getUserById(req.params.userId);
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }

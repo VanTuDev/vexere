@@ -41,29 +41,25 @@ exports.generateRefreshToken  = (payload, expiresIn) => {
     }
 };
 
-// exports.isTokenExpired = (token) => {
-//     const payloadBase64 = token.split('.')[1];
-//     const decodedJson = Buffer.from(payloadBase64, 'base64').toString();
-//     const decoded = JSON.parse(decodedJson)
-//     const exp = decoded.exp;
-//     console.log(decoded)
-//     const expired = (Date.now() >= exp * 1000)
-//     return expired
-// }
-
 exports.isTokenExpired = (token) => {
-    const payload = jwt.decode(token);
-    return payload.exp * 1000 < Date.now();
+    const payloadBase64 = token.split('.')[1];
+    const decodedJson = Buffer.from(payloadBase64, 'base64').toString();
+    const decoded = JSON.parse(decodedJson)
+    const exp = decoded.exp;
+    const expired = (Date.now() >= exp * 1000)
+    return expired
 }
+
+// exports.isTokenExpired = (token) => {
+//     const payload = jwt.decode(token);
+//     return payload.exp * 1000 < Date.now();
+// }
 
 
 exports.deCodeToken  = (token) => {
     let secretKeyProcess = process.env.JWT_SECRET
     try {
-        return jwt.verify(
-                token,
-                secretKeyProcess
-        )  
+        return jwt.verify(token,secretKeyProcess)  
     } catch (error) {
         console.log('Cant Decode Token')
         console.log(error)

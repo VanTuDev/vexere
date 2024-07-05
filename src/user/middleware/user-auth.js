@@ -1,29 +1,68 @@
-const jwt = require('jsonwebtoken');
-const User = require('../user-model');
-require('dotenv').config();
+const User = require('../user-model'); // Adjust the path to your user model
+const utilsToken = require('../utils/utils-token'); // Adjust the path to your utilsToken file
 
-module.exports = {
-    authenticate: (req, res, next) => {
-        const token = req.header('Authorization').replace('Bearer ', '');
-        try {
-            const decoded = jwt.verify(token, process.env.JWT_SECRET);
-            console.log(decoded)
-            User.findOne({ _id: decoded._id, 'tokens.token': token }).then((user) => {
-                if (!user) {
-                    throw new Error();
-                }
-                req.user = user;
-                next();
-            }).catch((error) => {
-                res.status(401).send({ error: 'Please authenticate.' });
+const authentication = async (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+    if (!authHeader) {
+        return res.status(401).json({
+            message: "You need to sign in"
+        });
+    }
+    const token = authHeader.replace('Bearer ', '').trim();
+    if (!token || token === 'Bearer') {
+        return res.status(401).json({
+            message: "You need to sign in"
+        });
+    }
+    if (utilsToken.isTokenExpired(token)) {
+        return res.status(401).json({
+            message: "Access token is expired!"
+        });
+    }
+    
+    const decodedToken = utilsToken.deCodeToken(token);
+    if (!decodedToken) {
+        return res.status(401).json({
+            message: "Invalid token"
+        });
+    }
+
+    try {
+        const userFromToken = decodedToken.payload;
+        console.log(userFromToken.id)
+        const userFromServer = await User.findById({_id: userFromToken.id});
+        console.log(userFromServer)
+        if (userFromServer === null) {
+            return res.status(401).json({
+                message: "Cannot find user!"
             });
-        } catch (error) {
-            res.status(401).send({ error: 'Please authenticate.' });
         }
-    },
-    // allowReadOnly: (req, res, next) => {
-    //     if (req.method === 'GET') {
-    //     }
-    //     return this.authenticate(req, res, next);
-    // }
+        req.user = userFromServer;
+        next();
+    } catch (error) {
+        return res.status(500).json({
+            message: "Internal server error"
+        });
+    }
 };
+
+const authorize = (requiredRoles) => {
+    return (req, res, next) => {
+        if (!req.user) {
+            return res.status(401).json({
+                message: "User not authenticated"
+            });
+        }
+        
+        const userRole = req.user.role;
+        if (!requiredRoles.includes(userRole)) {
+            return res.status(403).json({
+                message: `You don't have the required permissions to access this route`
+            });
+        }
+        
+        next();
+    };
+};
+
+module.exports = { authentication, authorize };

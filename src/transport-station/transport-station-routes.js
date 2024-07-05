@@ -8,8 +8,11 @@ const router = express.Router();
 
 module.exports = () => {
     router
-    .post('/register',handler.registerTransportStation)
-    .get('/confirmInformation/:transportStationId',handler.processConfirm)
-    .post('/allDone/:transportStationId',upload.array('images', 4),injectSVG,handler.finshedProcessRegister)
+    .post('/register',handler.registerTransportStation) // user
+    .get('/confirmInformation/:transportStationId',handler.processConfirm) // admin
+    .post('/allDone/:transportStationId', 
+            upload.array('images', 4), 
+            injectSVG,
+            handler.finshedProcessRegister) // transport-station
     return router;
 };
