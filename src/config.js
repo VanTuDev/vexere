@@ -1,5 +1,4 @@
 require('dotenv').config({ path: './src/.env'})
-
 const config = {
     port: process.env.PORT,
     database: {
@@ -10,9 +9,9 @@ const config = {
     storage:{
         driver:process.env.DRIVER
     },
-    gmail: {
-        username: process.env.MAIL_USERNAME
+    EMAIL:{
+        username:process.env.GMAIL_USERNAME,
+        password:process.env.GMAIL_PASSWORD
     }
 }
-
 module.exports = { config };

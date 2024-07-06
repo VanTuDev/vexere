@@ -6,8 +6,8 @@ const mailConfig = {
     port: 587,
     secure: false,
     auth: {
-        user: config.gmail.username,
-        pass: "bwwr jrwg znwc ahiz"
+        user: config.EMAIL.username,
+        pass: config.EMAIL.password
     }
 };
 
