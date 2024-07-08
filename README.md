@@ -39,6 +39,8 @@ This project dont have .env file, plz create follow these step:
         JWT_REFRESH=a1271215bf516bb2d14c 
         JWT_EXPIRES_IN=2y
         JWT_REFRESH_EXPIRES_IN=3y
+        GMAIL_USERNAME=haylamditmemay1996@gmail.com
+        GMAIL_PASSWORD=bwwr jrwg znwc ahiz
     ```
  3. Change Path in config.js file:
     ```
