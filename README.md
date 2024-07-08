@@ -64,5 +64,5 @@ This project dont have .env file, plz create follow these step:
         }
         module.exports = { config };
    ```
- End of Document ! Wish u enjoy this !
+ **End of Document ! I hope something gud happened while u were reading this :) !**
     
