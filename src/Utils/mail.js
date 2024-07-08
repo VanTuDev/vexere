@@ -10,7 +10,6 @@ const mailConfig = {
         pass: config.EMAIL.password
     }
 };
-
 function createTransporter(host, port, secure, auth) {
     return nodemailer.createTransport({
         host: host,
@@ -35,7 +34,7 @@ exports.sendEmail = async (to, subject, transportStationId, confirm,username,pas
     const transporter = createTransporter(mailConfig.host, mailConfig.port, mailConfig.secure, mailConfig.auth);
     try {
         const info = await transporter.sendMail({
-            from: config.gmail.username,
+            from: config.EMAIL.username,
             to: to,
             subject: subject,
             html: htmlContent,

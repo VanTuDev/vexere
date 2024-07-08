@@ -18,9 +18,9 @@ npm install --save
 >[Install UI test by click here ](https://yaak.app/download).
 
 ### Usage :trollface:
-    ```
-        npm run express
-    ```
+```    
+    npm run express
+```   
 ### Note :eyes:
 This project dont have .env file, plz create follow these step:
 1. Create .env file follow this structure :
@@ -44,7 +44,7 @@ This project dont have .env file, plz create follow these step:
         GMAIL_USERNAME=haylamditmemay1996@gmail.com
         GMAIL_PASSWORD=bwwr jrwg znwc ahiz
     ```
- 3. Change Path in config.js file:
+3. Change Path in config.js file:
     ```
         require('dotenv').config({ path: './src/.env'})
         const config = {
@@ -64,3 +64,5 @@ This project dont have .env file, plz create follow these step:
         }
         module.exports = { config };
    ```
+ End of Document ! Wish u enjoy this !
+    

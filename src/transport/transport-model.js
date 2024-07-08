@@ -1,33 +1,33 @@
 const mongoose = require('mongoose');
 
 const transportSchema = new mongoose.Schema({
-    userId:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: false,
-        default: new mongoose.Types.ObjectId('569ed8269353e9f4c51617aa')
-    },  
     name: {
         type: String,
         required: false
     },
     images:[{
         type: mongoose.Schema.Types.ObjectId,
-        require: false
+        require: false,
+        ref: 'Image'
     }],
-    status:{
-        type: String, 
-        enum: ['pass','not-pass','in-process','start'],
-        default: 'start'
+    brandId:{
+        type: mongoose.Schema.Types.ObjectId,
+        require: false,
+        ref: 'Brand'
     },
-    createAt: {
+    transportTypeId:{
+        type: mongoose.Schema.Types.ObjectId,
+        require: false,
+        ref: 'TransportType'
+    },
+    createdAt: {
         type: Date,
         default: Date.now
     },
-    updateAt: {
+    updatedAt: {
         type: Date
     },
-    deleteAt: {
+    deletedAt: {
         type: Date
     }
 });

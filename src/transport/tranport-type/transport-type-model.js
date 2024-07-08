@@ -1,18 +1,22 @@
 const mongoose = require('mongoose');
 
 const transportTypeSchema = new mongoose.Schema({
-    name: {
+    type: {
         type: String,
         require: false,
     },
-    createAt: {
+    status:{
+        type: String,
+        require: false,
+    },
+    createdAt: {
         type: Date,
         default: Date.now
     },
-    updateAt: {
+    updatedAt: {
         type: Date
     },
-    deleteAt: {
+    deletedAt: {
         type: Date
     }
 });

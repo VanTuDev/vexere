@@ -37,14 +37,14 @@ const transportStationSchema = new mongoose.Schema({
         enum: ['pass','not-pass','in-process','start'],
         default: 'start'
     },
-    createAt: {
+    createdAt: {
         type: Date,
         default: Date.now
     },
-    updateAt: {
+    updatedAt: {
         type: Date
     },
-    deleteAt: {
+    deletedAt: {
         type: Date
     }
 });
