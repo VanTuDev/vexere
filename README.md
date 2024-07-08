@@ -14,7 +14,9 @@ npm install --save
 ```
 
 ### My Favourite API Test  : YAAK      
+
 >[Install UI test by click here ](https://yaak.app/download).
+
 ### Usage :trollface:
     ```
         npm run express
@@ -55,6 +57,10 @@ This project dont have .env file, plz create follow these step:
             storage:{
                 driver:process.env.DRIVER
             },
+            EMAIL:{
+                username:process.env.GMAIL_USERNAME,
+                password:process.env.GMAIL_PASSWORD
+            }
         }
-        module.exports = { config }; 
+        module.exports = { config };
    ```
