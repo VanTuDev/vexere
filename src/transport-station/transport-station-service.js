@@ -21,7 +21,7 @@ exports.createTransportStation = async (userId, name, provinceId, districtId, wa
                 telephone: telephone,
             });
 
-            return transportStation.save();
+            return await transportStation.save();
         }
     } catch (error) {
         console.error(error);

@@ -1,32 +1,36 @@
 const Brand = require('./brand-model')
 
-exports.findAll = () => {
-
+exports.findAll = async () => {
+    try {
+        return await Brand.find()
+    }catch(error){
+        console.log(error)
+    }
 }
 exports.findOne = (Brand) => {
 
 }
-exports.findById = (id) => {
-
+exports.findById = async (id) => {
+    try {
+        return await Brand.findById(id)
+    }catch(error){
+        console.log(error)
+    }
 }
 exports.findByName = (name) => {
 
 }
-exports.create = (Brand) => {
-
-}
-exports.creates = (Brands) => {
-
+exports.create = async (brand) => {
+    try {
+        const brandServer = new Brand(brand)
+        return await brandServer.save()
+    }catch(error){
+        console.log(error)
+    }
 }
 exports.update = (Brand) => {
 
 }
-exports.updates = (Brands) => {
-
-}
 exports.delete = (Brand) => {
-    
-}
-exports.deletes = (Brands) => {
     
 }

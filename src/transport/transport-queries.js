@@ -1,32 +1,47 @@
 const Transport = require('./transport-model')
 
-exports.findAll = () => {
+exports.findAll = async () => {
+    try {
+        return await Transport.find()
+    }catch(error){
+        console.log(error)
+    }
+}
+exports.findOne = async (Transport) => {
+    try {
+        return await Transport
+                    .findOne({})
+                    
+    }catch(error){
+        console.log(error)
+    }
+}
+exports.findById = async (id) => {
+    try {
+        return await Transport
+                    .findById({_id: id})
+                    
+    }catch(error){
+        console.log(error)
+    }
+}
+exports.findByName = async (name) => {
 
 }
-exports.findOne = (Transport) => {
+exports.create = async (transportFromService) => {
+    try {
+        return await Transport
+                    .save(transportFromService)
+                    
+    }catch(error){
+        console.log(error)
+    }
+}
+
+exports.update = async (Brand) => {
 
 }
-exports.findById = (id) => {
 
-}
-exports.findByName = (name) => {
-
-}
-exports.create = (Transport) => {
-
-}
-exports.creates = (Transports) => {
-
-}
-exports.update = (Brand) => {
-
-}
-exports.updates = (Transports) => {
-
-}
-exports.delete = (Brand) => {
-    
-}
-exports.deletes = (Transports) => {
+exports.delete = async (Brand) => {
     
 }

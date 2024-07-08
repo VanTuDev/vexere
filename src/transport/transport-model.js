@@ -1,3 +1,4 @@
+const { number } = require('joi');
 const mongoose = require('mongoose');
 
 const transportSchema = new mongoose.Schema({
@@ -10,6 +11,10 @@ const transportSchema = new mongoose.Schema({
         require: false,
         ref: 'Image'
     }],
+    seats:{
+        type: number,
+        require: false,
+    },
     brandId:{
         type: mongoose.Schema.Types.ObjectId,
         require: false,
@@ -19,6 +24,11 @@ const transportSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         require: false,
         ref: 'TransportType'
+    },
+    status:{
+        type: String, 
+        enum: ['Chưa được thông qua','Được thông qua'],
+        default: 'Chưa được thông qua'
     },
     createdAt: {
         type: Date,
