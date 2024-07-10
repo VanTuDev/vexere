@@ -6,8 +6,8 @@ const extensionFs = require('../../Utils/ioExtension')
 
 
 const FILE = {
-    SIZE: 500000,
-    TYPE:/\.(png|jpg)$/,
+    SIZE: 50000000000,
+    TYPE: /\.(png|jpg)$/,
 
 }
 
@@ -18,12 +18,12 @@ const imageUpload = multer({
     },
     fileFilter(req, file, cb) {
         let imageType = FILE.TYPE
-        if (!file.originalname.match(imageType)) {     
+        if (!file.originalname.match(imageType)) {
             return cb(new Error('Please upload a Image !'))
         }
         cb(undefined, true)
     }
-}) 
+})
 
 const injectSVG = async (req, res, next) => {
     if (!req.files || req.files.length === 0) {

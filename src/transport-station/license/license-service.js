@@ -1,4 +1,4 @@
-const licenseQuery= require('./license-queries')
+const licenseQuery = require('./license-queries')
 const imageService = require('../../image/image-service')
 const extensionFs = require('../../Utils/ioExtension')
 exports.createLicense = async (name, purpose, imageId) => {
@@ -9,7 +9,7 @@ exports.createLicense = async (name, purpose, imageId) => {
             imageId: imageId
         }
         return await licenseQuery.createLicense(license)
-    }catch(error){
+    } catch (error) {
         console.error(error)
         throw "Service: Cannot create License."
     }
@@ -38,9 +38,9 @@ exports.createLicenses = async (licenses) => {
 exports.getAll = async () => {
     try {
         const licenses = await licenseQuery.getAll()
-        
+
         return licenses
-    }catch(error){
+    } catch (error) {
         console.error(error);
         throw "Service: Cannot create Licenses.";
         return error
@@ -50,7 +50,7 @@ exports.getAll = async () => {
 // Use one time for init licenses
 exports.init = async (licenses) => {
     try {
-        const directoryPath = 'C:/NodeJS/work-space/vexere/src/transport-station/license/license_preview/';
+        const directoryPath = 'src//transport-station//license//license_preview//';
         const files = await extensionFs.io.readFiles(directoryPath);
         const images = files.map(file => ({
             filename: file.filename,

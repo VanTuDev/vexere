@@ -64,11 +64,11 @@ exports.registerTransportStation = async (req, res, next) => {
         const { name, provinceCode, districtCode, wardCode, addressDetail, email, telephone } = value;
 
         const transportStation = await transportService.registerTransportStation(name, provinceCode, districtCode, wardCode, addressDetail, email, telephone);
-        if (!transportStation) 
+        if (!transportStation)
             res.status(201).json({
-            message: 'Transport station registered failure, please try again !'
+                message: 'Transport station registered failure, please try again !'
             })
-        
+
         res.status(201).json({
             message: 'Transport station registered successfully, please check your email for confirm !'
         });
@@ -83,7 +83,7 @@ exports.registerTransportStation = async (req, res, next) => {
 exports.finshedProcessRegister = async (req, res, next) => {
     try {
         const transportStationId = req.params.transportStationId;
-        
+        console.log(req.processedFiles)
         let transportStationFromServer;
         try {
             transportStationFromServer = await transportService.findById(transportStationId);
@@ -100,15 +100,15 @@ exports.finshedProcessRegister = async (req, res, next) => {
         }
 
         let userSaved;
-        
-            let user = {
-                username: utils.generateRandomString(10),
-                password: utils.generateRandomString(10)
-            }
-            userSaved = await userService.createUser(user.username, user.password);
-            await userService.findUserByIdAndUpdate(userSaved._id,'transport-station')
-        
-        
+
+        let user = {
+            username: utils.generateRandomString(10),
+            password: utils.generateRandomString(10)
+        }
+        userSaved = await userService.createUser(user.username, user.password);
+        await userService.findUserByIdAndUpdate(userSaved._id, 'transport-station')
+
+
         try {
             await transportQuery.updateUserIdInTransportStation(transportStationFromServer.id, userSaved._id);
 
@@ -122,6 +122,7 @@ exports.finshedProcessRegister = async (req, res, next) => {
 
         let imageFromServer;
         try {
+
             const images = Object.values(req.processedFiles)
                 .filter(filePath => filePath.endsWith('.jpg') || filePath.endsWith('.png'))
                 .map(filePath => ({
@@ -165,8 +166,8 @@ exports.finshedProcessRegister = async (req, res, next) => {
                 message: 'Error creating license CMM',
                 error: error.message,
             });
-        }        
-        await mail.sendEmail(transportStationFromServer.email,"This is your account !",transportStationFromServer._id, true,userSaved.username,user.password);
+        }
+        await mail.sendEmail(transportStationFromServer.email, "This is your account !", transportStationFromServer._id, true, userSaved.username, user.password);
         return res.status(200).json({
             message: "Bạn đã đăng ký thành công ! Vui lòng kiểm tra email để nhận Tài khoản và mật khẩu"
         });
