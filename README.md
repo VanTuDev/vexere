@@ -19,7 +19,7 @@ npm install --save
 
 ### Usage :trollface:
 ```    
-    npm run express
+npm run express
 ```   
 ### Note :eyes:
 This project dont have .env file, plz create follow these step:

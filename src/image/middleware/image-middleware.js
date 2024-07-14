@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
-exports.modifyImage = (req, res, next) => {
+exports.preview = (req, res, next) => {
     const filePath = req.params.imagePath;
     const fullImagePath = path.join(filePath);
     console.log(fullImagePath);

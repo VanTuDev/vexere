@@ -12,18 +12,24 @@ const transportSchema = new mongoose.Schema({
         ref: 'Image'
     }],
     seats:{
-        type: number,
+        type: Number,
         require: false,
+    },
+    transportStationId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Transport-Station'
     },
     brandId:{
         type: mongoose.Schema.Types.ObjectId,
         require: false,
-        ref: 'Brand'
+        ref: 'Brand',
+        defaut: new mongoose.Types.ObjectId('569ed8269353e9f4c51617aa')
     },
     transportTypeId:{
         type: mongoose.Schema.Types.ObjectId,
         require: false,
-        ref: 'TransportType'
+        ref: 'TransportType',
+        defaut: new mongoose.Types.ObjectId('569ed8269353e9f4c51617aa')
     },
     status:{
         type: String, 

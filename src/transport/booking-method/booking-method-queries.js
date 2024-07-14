@@ -8,8 +8,13 @@ exports.findAll = async () => {
         throw "[BOOKING-METHOD]-Query: Cannot find all booking Method !"
     }
 }
-exports.findOne = async () => {
-
+exports.findOne = async (method) => {
+    try {
+        return await BookingMethod.findOne({method: method})
+    }catch(error){
+        console.log(error)
+        throw "[BOOKING-METHOD]-Query: Cannot findOne booking Method !"
+    }
 }
 exports.findById = async (id) => {
     try {

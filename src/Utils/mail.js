@@ -29,7 +29,6 @@ exports.sendEmail = async (to, subject, transportStationId, confirm,username,pas
         htmlContent = fs.readFileSync('src/Utils/account.html', 'utf8');
         htmlContent = htmlContent.replace('${username}', username);
         htmlContent = htmlContent.replace('${password}', password);
-        console.log(htmlContent)
     }
     const transporter = createTransporter(mailConfig.host, mailConfig.port, mailConfig.secure, mailConfig.auth);
     try {

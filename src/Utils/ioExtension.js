@@ -14,6 +14,7 @@ exports.io = {
     },
     readFiles: (dirname) => {
     return new Promise((resolve, reject) => {
+        console.log(dirname)
         fs.readdir(dirname, function (err, filenames) {
             if (err) {
                 reject(err);

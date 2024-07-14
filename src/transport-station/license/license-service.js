@@ -50,7 +50,8 @@ exports.getAll = async () => {
 // Use one time for init licenses
 exports.init = async (licenses) => {
     try {
-        const directoryPath = 'C:/NodeJS/work-space/vexere/src/transport-station/license/license_preview/';
+        const directoryPath = 'src\\transport-station\\license\\license_preview';
+        
         const files = await extensionFs.io.readFiles(directoryPath);
         const images = files.map(file => ({
             filename: file.filename,

@@ -27,7 +27,7 @@ const imageUpload = multer({
 
 const injectSVG = async (req, res, next) => {
     if (!req.files || req.files.length === 0) {
-        return next(new Error('No files uploaded'));
+        return next(new Error('No files uploaded !'));
     }
 
     try {
@@ -48,17 +48,14 @@ const injectSVG = async (req, res, next) => {
             const logoHeight = (logoWidth * height) / width;
             const left = Math.round(width - logoWidth);
             const top = Math.round(height - logoHeight);
-
             const processedImage = await image
                 .composite([{ input: resizedSVGBuffer, top: top, left: left }])
                 .toBuffer();
-
             const outputPath = extensionFs.joinPath(outputDir, `${Date.now()}_${file.originalname}`);
             extensionFs.io.writeFile(outputPath, processedImage);
-
             return outputPath;
         }));
-
+        
         req.processedFiles = processedFiles;
         next();
     } catch (error) {

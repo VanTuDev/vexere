@@ -5,9 +5,15 @@ const brandSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    image: {
+        type: mongoose.Schema.Types.ObjectId,
+        require: false,
+        ref: 'Image'
+    },
     status:{
         type: String,
-        required: false
+        required: false,
+        default: 'valid'
     },
     createdAt: {
         type: Date,
@@ -21,5 +27,5 @@ const brandSchema = new mongoose.Schema({
     }
 });
 
-const Transport = mongoose.model('Brand', brandSchema);
-module.exports = Transport;
+const Brand = mongoose.model('Brand', brandSchema);
+module.exports = Brand;

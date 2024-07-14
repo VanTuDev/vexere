@@ -61,7 +61,13 @@ exports.registerTransportStation = async (req, res, next) => {
             });
         }
 
-        const { name, provinceCode, districtCode, wardCode, addressDetail, email, telephone } = value;
+        const { name, 
+                provinceCode, 
+                districtCode, 
+                wardCode, 
+                addressDetail, 
+                email, 
+                telephone } = value;
 
         const transportStation = await transportService.registerTransportStation(name, provinceCode, districtCode, wardCode, addressDetail, email, telephone);
         if (!transportStation) 
@@ -168,7 +174,7 @@ exports.finshedProcessRegister = async (req, res, next) => {
         }        
         await mail.sendEmail(transportStationFromServer.email,"This is your account !",transportStationFromServer._id, true,userSaved.username,user.password);
         return res.status(200).json({
-            message: "Bạn đã đăng ký thành công ! Vui lòng kiểm tra email để nhận Tài khoản và mật khẩu"
+            message: "Bạn đã đăng ký thành công ! Vui lòng kiểm tra email đã đăng ký để nhận Tài khoản và mật khẩu"
         });
     } catch (error) {
         console.error(error);

@@ -29,5 +29,7 @@ const TransportBookingMethodSchema = new mongoose.Schema({
     }
 });
 
+
+
 const TransportBookingMethod = mongoose.model('TransportBookingMethod', TransportBookingMethodSchema);
 module.exports = TransportBookingMethod;

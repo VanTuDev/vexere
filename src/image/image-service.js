@@ -3,9 +3,9 @@ const imageQuery = require('./image-queries')
 exports.createImage = async (filename, path) => {
     try {
         const image = {
-                filename: filename,
-                path: path
-        }
+            filename: filename,
+            path: path
+        };
         return await imageQuery.createImage(image)
     }catch(error){
         console.error(error)
@@ -13,8 +13,23 @@ exports.createImage = async (filename, path) => {
     }
 }
 
+exports.updateImage = async (oldImageId,newFilename, newPath) => {
+    try {
+        const image = {
+            filename: newFilename,
+            path: newPath
+        };
+        const imageFromServer = await imageQuery.updateImage(oldImageId,image)
+        return imageFromServer
+    }catch(error){
+        console.error(error)
+        throw "Service: Cannot update Image"
+    }
+}
+
 exports.createImages = async (images) => {
     try {
+        console.log(images)
         const createImagesPromises = images.map(async (image) => {
             const image123 = {
                 filename: image.filename,

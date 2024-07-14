@@ -2,7 +2,28 @@ const Transport = require('./transport-model')
 
 exports.findAll = async () => {
     try {
-        return await Transport.find()
+        return await Transport.find({})
+                                .select('_id name seats status images transportStationId brandId transportTypeId')
+                                .populate({
+                                    path: 'images',
+                                    model: 'Image',
+                                    select: 'filename path'
+                                })
+                                .populate({
+                                    path: 'transportStationId',
+                                    model: 'TransportStation',
+                                    select: 'name address email telephone status'
+                                })
+                                .populate({
+                                    path: 'brandId',
+                                    model: 'Brand',
+                                    select: 'name image'
+                                })
+                                .populate({
+                                    path: 'transportTypeId',
+                                    model: 'TransportType',
+                                    select: '_id type'
+                                });
     }catch(error){
         console.log(error)
     }
@@ -30,9 +51,8 @@ exports.findByName = async (name) => {
 }
 exports.create = async (transportFromService) => {
     try {
-        return await Transport
-                    .save(transportFromService)
-                    
+        const transport = new Transport(transportFromService);
+        return await transport.save();
     }catch(error){
         console.log(error)
     }

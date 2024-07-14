@@ -11,7 +11,7 @@ exports.create = async (method) => {
 
 exports.findById = async (id) => {
     try {
-        return await bookingMethod.findById(meidthod)
+        return await bookingMethod.findById(id)
     }catch(error){
         console.log(error)
         throw "[BOOKING METHOD]-Service: Cannot find by id booking Method !"
