@@ -8,6 +8,8 @@ import Sort from "./components/Sort/Sort.js";
 import Card from "./components/Card/Card.js";
 import Dashboard from "./components/Admin/Dashboard/Dashboard.js";
 import Home from "./pages/HomePage/HomePage.js";
+import Footer from "./components/Footer/Footer.js";
+
 
 export default function App() {
   return (
@@ -20,6 +22,7 @@ export default function App() {
         <Routes>
           <Route path="/booking" element={<MegaMenu />}></Route>
         </Routes>
+
         <div className="w-7/12 flex gap-10 p-0 m-auto ">
           <Routes>
             <Route path="/booking" element={<Sort />}></Route>
@@ -28,6 +31,9 @@ export default function App() {
             <Route path="/booking" element={<Card />}></Route>
           </Routes>
         </div>
+        <Routes>
+          <Route path="/booking" element={<Footer />}></Route>
+        </Routes>
       </div>
       <Routes>
         <Route path="/admin" element={<Dashboard />}></Route>

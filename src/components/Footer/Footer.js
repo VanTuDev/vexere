@@ -1,120 +1,384 @@
-import React from "react";
-// import "../../Sass/css/Footer.css";
-export default function Footer() {
+// Footer Component
+function Footer() {
     return (
-        <>
-            <footer>
-                <div className="footer_content">
-                    <div className="footer_top grid grid-cols-3 gap-6">
-                        <div className="footer_news">
-                            <div className="footer_title">Tin tức</div>
-                            <div className="footer_list">
-                                <a href="#">Xe giường nằm Limousine – đỉnh cao mới của ngành xe khách</a>
-                                <a href="#">Xe giường nằm Limousine – tổng hợp chất lượng cao</a>
-                                <a href="#">Xe limousine đi Vũng Tàu: Tổng hợp top 6 xe chất lượng cao</a>
-                                <a href="#">Review xe limousine đi Đà Lạt: những câu hỏi thường gặp</a>
-                                <a href="#">Xe limousine đi Sapa: Tổng hợp top các hãng xe chất lượng cao</a>
-                            </div>
-                        </div>
-                        <div className="footer_stations">
-                            <div className="footer_title">Tuyến đường</div>
-                            <div className="footer_list">
-                                <a href="#">Xe đi Buôn Mê Thuột từ Sài Gòn</a>
-                                <a href="#"> Xe đi Buôn Mê Thuột từ Sài Gòn</a>
-                                <a href="#">Xe đi Buôn Mê Thuột từ Sài Gòn</a>
-                                <a href="#">Xe đi Buôn Mê Thuột từ Sài Gòn</a>
-                                <a href="#">Xe đi Buôn Mê Thuột từ Sài Gòn</a>
-                            </div>
-                        </div>
-                        <div className="footer_limousine">
-                            <div className="footer_title">Xe Limousine</div>
-                            <div className="footer_list">
-                                <a href="#">Xe Limousine đi Đà Lạt từ Sài Gòn</a>
-                                <a href="#">Xe Limousine đi Đà Lạt từ Sài Gòn</a>
-                                <a href="#">Xe Limousine đi Đà Lạt từ Sài Gòn</a>
-                                <a href="#">Xe Limousine đi Đà Lạt từ Sài Gòn</a>
-                                <a href="#">Xe Limousine đi Đà Lạt từ Sài Gòn</a>
-                            </div>
-                        </div>
-                    </div>
-                    <hr />
-                    <div className="footer_main grid grid-cols-4 gap-6">
-                        <div className="footer_about">
-                            <div className="footer_title">Về chúng tôi</div>
-                            <div className="footer_list">
-                                <a href="#">Phần mềm nhà xe</a>
-                                <a href="#"> Phần mềm đại lý</a>
-                                <a href="#">Giới thiệu</a>
-                                <a href="#">Tuyển dụng</a>
-                                <a href="#">Liên hệ</a>
-                            </div>
-                        </div>
-                        <div className="footer_sup">
-                            <div className="footer_title">Hỗ trợ</div>
-                            <div className="footer_list">
-                                <a href="#">Hướng dẫn thanh toán</a>
-                                <a href="#">Quy chế VeXeRe.com</a>
-                                <a href="#">Bảo mật thông tin</a>
-                                <a href="#">Bảo mật thanh toán</a>
-                                <a href="#">Câu hỏi?</a>
-                            </div>
-                        </div>
-                        <div className="footer_award">
-                            <div className="footer_title">Chứng nhận</div>
-                            <div className="footer_list">
-                                <a href="#">
-                                    <img className=" lazyloaded" alt="Vexere - Certificate" data-src="https://storage.googleapis.com/fe-production/images/Home/certificate0.png" width={121} height={46} src="https://storage.googleapis.com/fe-production/images/Home/certificate0.png" />
-                                </a>
-                                <a href="#">
-                                    <img className=" lazyloaded" alt="Vexere - Certificate" data-src="https://storage.googleapis.com/fe-production/images/Home/certificate1.png" width={121} height={46} src="https://storage.googleapis.com/fe-production/images/Home/certificate1.png" />
-                                </a>
-                                <a href="#">
-                                    <img className=" lazyloaded" alt="Vexere - Certificate" data-src="https://storage.googleapis.com/fe-production/images/dangkybocongthuong.png" width={151} height={56} src="https://storage.googleapis.com/fe-production/images/dangkybocongthuong.png" />
-                                </a>
-                                <a href="#">
-                                    <img className=" ls-is-cached lazyloaded" alt="Vexere - Certificate" data-src="https://storage.googleapis.com/fe-production/images/dangkybocongthuong.png" width={151} height={56} src="https://storage.googleapis.com/fe-production/images/dangkybocongthuong.png" />
-                                </a>
-                            </div>
-                        </div>
-                        <div className="footer_download">
-                            <div className="footer_title">Tải ứng dụng đặt vé</div>
-                            <div className="footer_list">
-                                <a href="#">
-                                    <img className="FooterMenu__DownloadLogo-sc-13w4bwi-1 ewtgXx lazyloaded" alt="download-logo-1" data-src="https://storage.googleapis.com/fe-production/images/landingpagetet2018/AP-icon.png?v=2" width={150} height={49} src="https://storage.googleapis.com/fe-production/images/landingpagetet2018/AP-icon.png?v=2" />
-                                </a>
-                                <a href="#">
-                                    <img className="FooterMenu__DownloadLogo-sc-13w4bwi-1 ewtgXx lazyloaded" alt="download-logo-2" data-src="https://storage.googleapis.com/fe-production/images/landingpagetet2018/GP-icon.png?v=2" width={150} height={49} src="https://storage.googleapis.com/fe-production/images/landingpagetet2018/GP-icon.png?v=2" />
-                                </a>
+        <div className="homepage__FooterContainer footer-container bg-gray-200 w-full">
+            <div className="Footer_top pt-12">
+                <div className="Footer__top_content max-w-7xl mx-auto flex flex-wrap gap-20">
+                    <div className="Footer_col w-full sm:w-1/2 md:w-1/4">
+                        <div className="Footer_col_flex_column">
+                            <div>
+                                <p className=" text-lg font-extrabold   text-gray-800 mb-4">
+                                    Xe Limousine
+                                </p>
+                                <ul className="list-none p-0">
+                                    <li className="my-4">
+                                        <a
+                                            href="https://daily.vexere.com/"
+                                            className="underline font-semibold   text-gray-800"
+                                        >
+                                            Xe đi Buôn Mê Thuột từ Sài Gòn
+                                        </a>
+                                    </li>
+                                    <li className="my-4">
+                                        <a
+                                            href="/vi-VN/gioi-thieu.html"
+                                            className="underline font-semibold   text-gray-800"
+                                        >
+                                            Xe đi Vũng Tàu từ Sài Gòn
+                                        </a>
+                                    </li>
+                                    <li className="my-4">
+                                        <a
+                                            href="https://careers.vexere.com"
+                                            className="underline font-semibold   text-gray-800"
+                                        >
+                                            Xe đi Nha Trang từ Sài Gòn
+                                        </a>
+                                    </li>
+                                    <li className="my-4">
+                                        <a
+                                            href="https://blog.vexere.com"
+                                            className="underline font-semibold   text-gray-800"
+                                        >
+                                            Xe đi Đà Lạt từ Sài Gòn
+                                        </a>
+                                    </li>
+                                    <li className="my-4">
+                                        <a
+                                            href="/vi-VN/lien-he.html"
+                                            className="underline font-semibold   text-gray-800"
+                                        >
+                                            Xe đi Sapa từ Hà Nội
+                                        </a>
+                                    </li>
+                                    <li className="my-4">
+                                        <a
+                                            href="/vi-VN/lien-he.html"
+                                            className="underline font-semibold   text-gray-800"
+                                        >
+                                            Xe đi Hải Phòng từ Hà Nội
+                                        </a>
+                                    </li>
+                                    <li className="my-4">
+                                        <a
+                                            href="/vi-VN/lien-he.html"
+                                            className="underline font-semibold   text-gray-800"
+                                        >
+                                            Xe đi Vinh từ Hà Nội
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
-            </footer>
-            <div className="License__Wrapper-fwwcnv-0 kSJbnI footer_license">
-                <div className="License__Ayah-fwwcnv-1 kbYbCv">
-                    <div
-                        style={{
-                            fontSize: "large",
-                            fontWeight: "bold",
-                            color: "rgb(77, 77, 77)",
-                        }}
-                    >
-                        Công ty TNHH Thương Mại Dịch Vụ VeXeRe
+                    <div className="Footer_col w-full sm:w-1/2 md:w-1/4">
+                        <div className="Footer_col_flex_column">
+                            <div>
+                                <p className=" text-lg font-extrabold   text-gray-800 mb-4">
+                                    Xe Limousine
+                                </p>
+                                <ul className="list-none p-0">
+                                    <li className="my-4">
+                                        <a
+                                            href="https://daily.vexere.com/"
+                                            className="underline font-semibold   text-gray-800"
+                                        >
+                                            Xe Limousine đi Đà Lạt từ Sài Gòn
+                                        </a>
+                                    </li>
+                                    <li className="my-4">
+                                        <a
+                                            href="/vi-VN/gioi-thieu.html"
+                                            className="underline font-semibold   text-gray-800"
+                                        >
+                                            Xe Limousine đi Vũng Tàu từ Sài Gòn
+                                        </a>
+                                    </li>
+                                    <li className="my-4">
+                                        <a
+                                            href="https://careers.vexere.com"
+                                            className="underline font-semibold   text-gray-800"
+                                        >
+                                            Xe Limousine đi Nha Trang từ Sài Gòn
+                                        </a>
+                                    </li>
+                                    <li className="my-4">
+                                        <a
+                                            href="https://blog.vexere.com"
+                                            className="underline font-semibold   text-gray-800"
+                                        >
+                                            Xe Limousine đi Hải Phòng từ Hà Nội
+                                        </a>
+                                    </li>
+                                    <li className="my-4">
+                                        <a
+                                            href="/vi-VN/lien-he.html"
+                                            className="underline font-semibold   text-gray-800"
+                                        >
+                                            Xe Limousine đi Sapa Từ Hà Nội
+                                        </a>
+                                    </li>
+                                    <li className="my-4">
+                                        <a
+                                            href="/vi-VN/lien-he.html"
+                                            className="underline font-semibold   text-gray-800"
+                                        >
+                                            Xe Limousine đi Quảng Ninh từ Hà Nội
+                                        </a>
+                                    </li>
+                                    <li className="my-4">
+                                        <a
+                                            href="/vi-VN/lien-he.html"
+                                            className="underline font-semibold   text-gray-800"
+                                        >
+                                            Xe Limousine đi Hạ Long từ Hà Nội
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div>Địa chỉ đăng ký kinh doanh: 8C Chữ Đồng Tử, Phường 7, Quận Tân Bình, Thành Phố Hồ Chí Minh, Việt Nam</div>
-                    <div>
-                        Địa chỉ:&nbsp;
-                        <a href="https://www.google.com/maps/place/CirCO+Dien+Bien+Phu/@10.7822282,106.6880465,18z/data=!3m1!4b1!4m13!1m7!3m6!1s0x31752f31c5edc5a3:0xe8f6cfd8e118c28c!2zMjIyIMSQaeG7h24gQmnDqm4gUGjhu6csIFBoxrDhu51uZyA3LCBRdeG6rW4gMywgSOG7kyBDaMOtIE1pbmgsIFZpZXRuYW0!3b1!8m2!3d10.7822256!4d106.6891435!3m4!1s0x31752f9514a4a77f:0xb0d51eeba4261070!8m2!3d10.7822256!4d106.6891435?hl=en-US" rel="nofollow noopener noreferrer" title="Xem bản đồ" target="_blank" className="License__LinkStyled-fwwcnv-2 NrTuu">
-                            <span itemProp="address" itemType="http://schema.org/PostalAddress">
-                                <span itemProp="streetAddress">Lầu 8,9, Tòa nhà CirCO, 222 Điện Biên Phủ, Quận 3, TP. Hồ Chí Minh, Việt Nam </span>
-                            </span>
-                        </a>
-                        <br />
-                        Giấy chứng nhận ĐKKD số 0315133726 do Sở KH và ĐT TP. Hồ Chí Minh cấp lần đầu ngày 27/6/2018
-                        <div>Bản quyền © 2020 thuộc về VeXeRe.Com</div>
+                    <div className="Footer_col w-full sm:w-1/2 md:w-1/4">
+                        <p className=" text-lg font-extrabold   text-gray-800 mb-4">
+                            Tin Tức
+                        </p>
+                        <ul className="list-none p-0">
+                            <li className="my-4">
+                                <a
+                                    href="/vi-VN/huong-dan-thanh-toan-tren-website.html"
+                                    className="underline font-semibold   text-gray-800"
+                                >
+                                    Xe giường nằm Limousine – đỉnh cao mới của ngành xe khách
+                                </a>
+                            </li>
+                            <li className="my-4">
+                                <a
+                                    href="/vi-VN/quy-che"
+                                    className="underline font-semibold   text-gray-800"
+                                >
+                                    Xe limousine đi Vũng Tàu: Tổng hợp top 6 xe chất lượng cao
+                                </a>
+                            </li>
+                            <li className="my-4">
+                                <a
+                                    href="/vi-VN/chinh-sach-bao-mat"
+                                    className="underline font-semibold   text-gray-800"
+                                >
+                                    Review xe limousine đi Đà Lạt: những câu hỏi thường gặp
+                                </a>
+                            </li>
+                            <li className="my-4">
+                                <a
+                                    href="/vi-VN/chinh-sach-bao-mat-thanh-toan"
+                                    className="underline font-semibold   text-gray-800"
+                                >
+                                    Xe limousine đi Sapa: Tổng hợp top các hãng xe chất lượng cao
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </>
+            <div className="FooterMenu bg-gray-200 mt-12 ">
+                <div className="Footer__top_content max-w-7xl mx-auto flex flex-wrap ">
+                    <div className="Footer_col w-full sm:w-1/2 md:w-1/4">
+                        <p className=" text-lg font-extrabold   text-gray-800 mb-4">
+                            Hỗ trợ
+                        </p>
+                        <ul className="list-none p-0">
+                            <li className="my-4">
+                                <a
+                                    href="/vi-VN/huong-dan-thanh-toan-tren-website.html"
+                                    className="underline font-semibold   text-gray-800"
+                                >
+                                    Hướng dẫn thanh toán
+                                </a>
+                            </li>
+                            <li className="my-4">
+                                <a
+                                    href="/vi-VN/quy-che"
+                                    className="underline font-semibold   text-gray-800"
+                                >
+                                    Quy chế Vexere.com
+                                </a>
+                            </li>
+                            <li className="my-4">
+                                <a
+                                    href="/vi-VN/chinh-sach-bao-mat"
+                                    className="underline font-semibold   text-gray-800"
+                                >
+                                    Chính sách bảo mật thông tin
+                                </a>
+                            </li>
+                            <li className="my-4">
+                                <a
+                                    href="/vi-VN/chinh-sach-bao-mat-thanh-toan"
+                                    className="underline font-semibold   text-gray-800"
+                                >
+                                    Chính sách bảo mật thanh toán
+                                </a>
+                            </li>
+                            <li className="my-4">
+                                <a
+                                    href="/vi-VN/chinh-sach-va-quy-trinh-giai-quyet-tranh-chap-khieu-nai"
+                                    className="underline font-semibold   text-gray-800"
+                                >
+                                    Chính sách và quy trình giải quyết tranh chấp, khiếu nại
+                                </a>
+                            </li>
+                            <li className="my-4">
+                                <a
+                                    href="/vi-VN/nhung-cau-hoi-thuong-gap.html"
+                                    className="underline font-semibold   text-gray-800"
+                                >
+                                    Câu hỏi thường gặp
+                                </a>
+                            </li>
+                            <li className="my-4">
+                                <a
+                                    href="https://vexere.com/vi-VN/tra-cuu-don-hang"
+                                    className="underline font-semibold   text-gray-800"
+                                >
+                                    Tra cứu đơn hàng
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="Footer_col w-full sm:w-1/2 md:w-1/4">
+                        <div className="Footer_col_flex_column">
+                            <div>
+                                <p className=" text-lg font-extrabold   text-gray-800 mb-4">
+                                    Về chúng tôi
+                                </p>
+                                <ul className="list-none p-0">
+                                    <li className="my-4">
+                                        <a
+                                            href="https://daily.vexere.com/"
+                                            className="underline font-semibold   text-gray-800"
+                                        >
+                                            Phần mềm đại lý
+                                        </a>
+                                    </li>
+                                    <li className="my-4">
+                                        <a
+                                            href="/vi-VN/gioi-thieu.html"
+                                            className="underline font-semibold   text-gray-800"
+                                        >
+                                            Giới Thiệu Vexere.com
+                                        </a>
+                                    </li>
+                                    <li className="my-4">
+                                        <a
+                                            href="https://careers.vexere.com"
+                                            className="underline font-semibold   text-gray-800"
+                                        >
+                                            Tuyển dụng
+                                        </a>
+                                    </li>
+                                    <li className="my-4">
+                                        <a
+                                            href="https://blog.vexere.com"
+                                            className="underline font-semibold   text-gray-800"
+                                        >
+                                            Tin tức
+                                        </a>
+                                    </li>
+                                    <li className="my-4">
+                                        <a
+                                            href="/vi-VN/lien-he.html"
+                                            className="underline font-semibold   text-gray-800"
+                                        >
+                                            Liên hệ
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p className=" text-lg font-extrabold   text-gray-800 mb-4">
+                                    Chứng nhận
+                                </p>
+                                <div className="certificate-container">
+                                    <img
+                                        className="passenger-icon"
+                                        src="https://229a2c9fe669f7b.cmccloud.com.vn/images/Desktop_Cert_1.png"
+                                        alt="passenger-icon"
+                                        width="200"
+                                        height="auto"
+                                    />
+                                    <div className=" text-lg font-extrabold   text-gray-800 mb-4 flex">
+                                        <a href="http://online.gov.vn/Home/AppDetails/462">
+                                            <img
+                                                className="passenger-icon"
+                                                src="https://229a2c9fe669f7b.cmccloud.com.vn/images/Desktop_Cert_2.png"
+                                                alt="passenger-icon"
+                                                width="100"
+                                                height="auto"
+                                            />
+                                        </a>
+                                        <a href="http://online.gov.vn/Home/WebDetails/70277">
+                                            <img
+                                                className="passenger-icon"
+                                                src="https://229a2c9fe669f7b.cmccloud.com.vn/images/Desktop_Cert_2.png"
+                                                alt="passenger-icon"
+                                                width="100"
+                                                height="auto"
+                                            />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="Footer_col w-full sm:w-1/2 md:w-1/4">
+                        <p className=" text-lg font-extrabold   text-gray-800 mb-4">
+                            Đối tác thanh toán
+                        </p>
+                        <img
+                            className="passenger-icon"
+                            src="https://229a2c9fe669f7b.cmccloud.com.vn/images/payment_partner_desktop.png"
+                            alt="passenger-icon"
+                            width="202"
+                            height="344"
+                        />
+                    </div>
+                    <div className="Footer_col w-full sm:w-1/2 md:w-1/4">
+                        <p className="text-lg font-extrabold   text-gray-800 mb-4">
+                            Tải ứng dụng Vexere
+                        </p>
+                        <div className="download-vexete-section">
+                            <img
+                                className="w-7/12 h-auto"
+                                src="https://229a2c9fe669f7b.cmccloud.com.vn/images/landingpagetet2023/download_app_qr.png"
+                                alt="landingpagetet2023/download_app_qr"
+                                height=""
+                            />
+                            <div className="buttons flex flex-row gap-1 ">
+
+                                <img
+                                    className="w-7/12 h-auto"
+                                    data-src="https://229a2c9fe669f7b.cmccloud.com.vn/images/download-app-store.png"
+                                    src="https://229a2c9fe669f7b.cmccloud.com.vn/images/download-app-store.png"
+                                    alt="download-app-store-img"
+                                    width="120"
+                                    height="48"
+                                />
+
+
+                                <img
+                                    className=" w-7/12 h-auto "
+                                    data-src="https://229a2c9fe669f7b.cmccloud.com.vn/images/download-gg-play.png"
+                                    src="https://229a2c9fe669f7b.cmccloud.com.vn/images/download-gg-play.png"
+                                    alt="download-gg-play-img"
+                                    width="120"
+                                    height="48"
+                                />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }
+export default Footer;

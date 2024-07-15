@@ -1,7 +1,13 @@
 import React from "react";
 import MegaMenu from "../../components/MegaMenu/MegaMenu";
-import { List, Card, Carousel } from "antd";
+import { List, Card } from "antd";
+import Slider from "react-slick";
 import "./Home.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header";
+
 export default function Home() {
     const data = [
         {
@@ -17,15 +23,59 @@ export default function Home() {
             img: "./images/slide4.png",
         },
     ];
+
+    const data2 = [
+        {
+            title: "Nhận ưu đãi x2 khi đặt dịch vụ xe khách khứ hồi",
+            img: "./images/img_card_1.jpg",
+        },
+        {
+            title: "Tổng hợp chương trình khuyến mãi trong tháng",
+            img: "./images/img_card_2.png",
+        },
+        {
+            title: "Dành cho khách hàng mới - Giảm đến 25% khi đặt VeXeRe",
+            img: "./images/img_card_3.jpg",
+        },
+        {
+            title: "Ưu đãi bất ngờ khi đặt VeXeRe",
+            img: "./images/img_card_4.png",
+        },
+        {
+            title: "Giới thiệu bạn mới - Nhận quà khủng từ VeXeRe",
+            img: "./images/img_card_5.jpg",
+        },
+    ];
+
     const settings = {
-        className: "center",
+        dots: true,
         infinite: true,
-        autoplay: true,
+        speed: 500,
         slidesToShow: 3,
-        swipeToSlide: true,
+        slidesToScroll: 3,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    infinite: true,
+                    dots: true,
+                },
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
     };
+
     return (
         <>
+            <Header />
             <div className="home_banner">
                 <img src="./images/banner1.png" alt="123" className="img_banner" />
                 <div className="home_content">
@@ -45,28 +95,18 @@ export default function Home() {
                 <div className="home_slide_content">
                     <h2 className="home_slide_title mt-5">Ưu đãi nổi bật</h2>
                     <div className="home_slide_carousel">
-                        <Carousel {...settings} arrows infinite={false} className="slide_main">
-                            <div>
-                                <a href="#">
-                                    <img src="./images/slide1.png" alt="123" />
-                                </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                    <img src="./images/slide2.png" alt="123" />
-                                </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                    <img src="./images/slide4.png" alt="123" />
-                                </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                    <img src="./images/slide3.png" alt="123" />
-                                </a>
-                            </div>
-                        </Carousel>
+                        <Slider {...settings}>
+                            {data2.map((item) => (
+                                <div key={item.title} className="carousel-card-container">
+                                    <Card
+                                        className="carousel-card"
+                                        title={<img src={item.img} className="carousel-card-img" alt="card" />}
+                                    >
+                                        <p className="font-bold text-sm">{item.title}</p>
+                                    </Card>
+                                </div>
+                            ))}
+                        </Slider>
                     </div>
                 </div>
 
@@ -77,13 +117,12 @@ export default function Home() {
                         dataSource={data}
                         renderItem={(item) => (
                             <List.Item>
-                                <Card style={{ height: "290px" }} title={<img src={item.img} style={{ height: "200px", width: "100%" }} alt />}>
-                                    <p className="font-bold text-sm"> {item.title}</p>
+                                <Card style={{ height: "290px" }} title={<img src={item.img} style={{ height: "200px", width: "100%" }} alt="news" />}>
+                                    <p className="font-bold text-sm">{item.title}</p>
                                 </Card>
                             </List.Item>
                         )}
                     />
-                    ,
                 </div>
 
                 <div className="home_slide_content3">
@@ -91,7 +130,7 @@ export default function Home() {
                     <div className="seo-content">
                         <div className="card">
                             <div className="icon-container">
-                                <img className=" lazyloaded" data-src="https://storage.googleapis.com/fe-production/svgIcon/bus-car-icon.svg" src="https://storage.googleapis.com/fe-production/svgIcon/bus-car-icon.svg" alt="busCar-icon" />
+                                <img className="lazyloaded" data-src="https://storage.googleapis.com/fe-production/svgIcon/bus-car-icon.svg" src="https://storage.googleapis.com/fe-production/svgIcon/bus-car-icon.svg" alt="busCar-icon" />
                             </div>
                             <div className="card-content">
                                 <p className="base__Headline-sc-1tvbuqk-7 OkeDq color--light-dark">2000+ nhà xe chất lượng cao</p>
@@ -100,7 +139,7 @@ export default function Home() {
                         </div>
                         <div className="card">
                             <div className="icon-container">
-                                <img className=" lazyloaded" data-src="https://storage.googleapis.com/fe-production/svgIcon/yellow-ticket-icon.svg" src="https://storage.googleapis.com/fe-production/svgIcon/yellow-ticket-icon.svg" alt="easybook-icon" />
+                                <img className="lazyloaded" data-src="https://storage.googleapis.com/fe-production/svgIcon/yellow-ticket-icon.svg" src="https://storage.googleapis.com/fe-production/svgIcon/yellow-ticket-icon.svg" alt="easybook-icon" />
                             </div>
                             <div className="card-content">
                                 <p className="base__Headline-sc-1tvbuqk-7 OkeDq color--light-dark">Đặt vé dễ dàng</p>
@@ -109,7 +148,7 @@ export default function Home() {
                         </div>
                         <div className="card">
                             <div className="icon-container">
-                                <img className=" lazyloaded" data-src="https://storage.googleapis.com/fe-production/svgIcon/completement-icon.svg" src="https://storage.googleapis.com/fe-production/svgIcon/completement-icon.svg" alt="guarantee-icon" />
+                                <img className="lazyloaded" data-src="https://storage.googleapis.com/fe-production/svgIcon/completement-icon.svg" src="https://storage.googleapis.com/fe-production/svgIcon/completement-icon.svg" alt="guarantee-icon" />
                             </div>
                             <div className="card-content">
                                 <p className="base__Headline-sc-1tvbuqk-7 OkeDq color--light-dark">Đảm bảo có vé</p>
@@ -118,7 +157,7 @@ export default function Home() {
                         </div>
                         <div className="card">
                             <div className="icon-container">
-                                <img className=" lazyloaded" data-src="https://storage.googleapis.com/fe-production/svgIcon/coupon-icon.svg" src="https://storage.googleapis.com/fe-production/svgIcon/coupon-icon.svg" alt="deal-icon" />
+                                <img className="lazyloaded" data-src="https://storage.googleapis.com/fe-production/svgIcon/coupon-icon.svg" src="https://storage.googleapis.com/fe-production/svgIcon/coupon-icon.svg" alt="deal-icon" />
                             </div>
                             <div className="card-content">
                                 <p className="base__Headline-sc-1tvbuqk-7 OkeDq color--light-dark">Nhiều ưu đãi</p>
@@ -131,19 +170,19 @@ export default function Home() {
                     <h2 className="home_slide_title mt-5">Trang web đã được kết nối đến</h2>
                     <div className="grid grid-cols-6 home_slide_tv">
                         <a href="https://vnexpress.net/vexere-ho-tro-5-000-ve-tet-2021-cho-sinh-vien-4211920.html" target="_blank" rel="noreferrer">
-                            <img className=" lazyloaded" data-src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-vne.png" src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-vne.png" alt="express" />
+                            <img className="lazyloaded" data-src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-vne.png" src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-vne.png" alt="express" />
                         </a>
                         <a href="https://www.youtube.com/watch?v=du_TpvYVNg0" target="_blank" rel="noreferrer">
-                            <img className=" lazyloaded" data-src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-vtv.png" src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-vtv.png" alt="vtv" />
+                            <img className="lazyloaded" data-src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-vtv.png" src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-vtv.png" alt="vtv" />
                         </a>
                         <a href="http://cesti.gov.vn/chi-tiet/3403/doi-moi-sang-tao/khoi-nghiep-voi-he-thong-ban-ve-xe-truc-tuyen" target="_blank" rel="noreferrer">
-                            <img className=" lazyloaded" data-src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-cesti.png" src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-cesti.png" alt="cesti" />
+                            <img className="lazyloaded" data-src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-cesti.png" src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-cesti.png" alt="cesti" />
                         </a>
-                        <a href="https://dantri.com.vn/kinh-doanh/cong-ty-co-phan-ve-xe-re-goi-von-thanh-cong-tu-cac-nha-dau-tu-uy-tin-20191225100127703.htm" target="_blank" rel="noreferrer">
-                            <img className=" lazyloaded" data-src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-dantri.png" src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-dantri.png" alt="dan-tri" />
+                        <a href="https://dantri.com.vn/kinh-doanh/cong-ty-co-phan-ve-xe-re-goi-von-thanh-cong" target="_blank" rel="noreferrer">
+                            <img className="lazyloaded" data-src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-dantri.png" src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-dantri.png" alt="dantri" />
                         </a>
-                        <a href="https://tuoitre.vn/blog/quy-dau-tu-nhat-va-singapore-tiep-suc-vexerecom-767367.htm" target="_blank" rel="noreferrer">
-                            <img className=" lazyloaded" data-src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-tuoitre.png" src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-tuoitre.png" alt="tuoi-tre" />
+                        <a href="https://tuoitre.vn/vexere-com-chinh-thuc-nhan-von-dau-tu-tu-quy-cyberagent-20160202152334331.htm" target="_blank" rel="noreferrer">
+                            <img className="lazyloaded" data-src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-tuoitre.png" src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-tuoitre.png" alt="tuoitre" />
                         </a>
                         <a href="https://www.youtube.com/watch?v=qT30wzsFKGw" target="_blank" rel="noreferrer">
                             <img className=" lazyloaded" data-src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-fbnc.png" src="https://storage.googleapis.com/fe-production/images/logo-baochi/logo-fbnc.png" alt="fbnc" />
@@ -197,6 +236,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     );
 }

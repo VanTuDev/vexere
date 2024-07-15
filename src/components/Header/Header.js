@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "../Header/logo-trangchu.svg";
+import { Popover } from "antd";
 
 function Header() {
   return (
@@ -7,11 +8,9 @@ function Header() {
       <div className="flex flex-col md:flex-row md:items-center">
         <div className="w-full md:w-1/3 flex flex-col md:flex-row items-center gap-2">
           <div className="w-1/2 md:items-center">
-            <img src={Logo} alt="logo" />
-          </div>
-          <div></div>
-          <div className="font-bold text-white md:text-left hidden xl:block">
-            <p>Cam kết hoàn 150 nếu nhà xe không giữ vé</p>
+            <a href="/">
+              <img src={Logo} alt="logo" />
+            </a>
           </div>
         </div>
         <div className="w-full flex justify-end gap-3">
@@ -26,7 +25,6 @@ function Header() {
           </a>
         </div>
         <div className="w-full md:w-1/3 flex justify-center md:justify-end items-center gap-2 mt-4 md:mt-0">
-          <img src="" alt="Flag" className="hidden lg:block" />
           <button
             style={{
               background: "linear-gradient(to bottom right, #ef4765, #ff9a5a)",
@@ -34,7 +32,11 @@ function Header() {
             }}
             className="bg-slate-50 font-bold px-7 rounded-lg whitespace-nowrap"
           >
-            <p>Hotline 24/7</p>
+            <Popover placement="bottom" title="Số Điện Thoại Tổng Đài" content={"09323232222"} trigger="click">
+              <a href="#" className="text-white no-underline">
+                Hotline
+              </a>
+            </Popover>
           </button>
           <button
             style={{

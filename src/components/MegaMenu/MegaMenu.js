@@ -5,7 +5,7 @@ import { DatePicker } from "antd";
 import "./btn.css";
 function MegaMenu() {
   return (
-    <div className="w-full md:w-7/12 mx-auto bg-white py-2 mt-4 rounded-lg">
+    <div className="w-full mx-auto bg-white py-2 mt-4 rounded-lg">
       <div className="flex flex-col md:flex-row items-center justify-center">
         <div className="flex flex-col gap-4">
           <div className="flex flex-wrap gap-1 justify-center">
