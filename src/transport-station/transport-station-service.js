@@ -32,6 +32,7 @@ exports.createTransportStation = async (userId, name, provinceId, districtId, wa
 exports.registerTransportStation = async (name, provincesCode, districtCode, wardCode, addressDetail, email, telephone) => {
     try {
         let address = await addressService.createAddress(provincesCode, districtCode, wardCode);
+        console.log(address)
         let transportStation = await transportStationQueries.createTransportStation({
             name: name,
             address: address._id,

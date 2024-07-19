@@ -6,6 +6,8 @@ module.exports = () => {
         router
         .get('/', 
                 handler.getAll)  
+        .get('/:routeId', 
+        handler.getLocationByRouteId) 
         .post('/', 
         handler.createLocation)        
         return router;

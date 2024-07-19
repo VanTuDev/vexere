@@ -15,7 +15,8 @@ const TransportBookingMethodSchema = new mongoose.Schema({
     },
     seatToBuy:{
         type: Number,
-        required: false
+        required: false,
+        default: 0
     },
     createdAt: {
         type: Date,

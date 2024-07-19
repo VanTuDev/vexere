@@ -1,5 +1,6 @@
 const locationQuery = require('./location-queries')
 const Location = require('./location-model'); 
+const BookingTransportMethod = require('../../booking-method/transport-booking-method/tranport-booking-method-model')
 
 exports.getAll = async (req, res) => {
     try {
@@ -42,3 +43,20 @@ exports.createLocation = async (req, res, next) => {
         });
     }
 };
+
+exports.getLocationByRouteId = async (req, res) => {
+    try {
+        const routeId = req.params.routeId
+        const locationSaved = await Location.find({routeId: routeId})        
+        return res.status(200).json({
+            success: true,
+            locations: locationSaved
+        })
+    }catch(error){
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            error: error.message
+        });    
+    }
+}

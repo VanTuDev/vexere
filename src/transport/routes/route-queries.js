@@ -5,7 +5,11 @@ exports.findAll = async () => {
         return await Route.find()
                             .populate({
                                 path: 'transportId',
-                                model: 'Transport'
+                                model: 'Transport',
+                                populate : {
+                                    path : 'images',
+                                    model: 'Image'
+                                }
                             })
                             .populate({
                                 path: 'departureLocation',

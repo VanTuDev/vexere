@@ -47,25 +47,37 @@ exports.getAll = async () => {
     }
 }
 
-// Use one time for init licenses
+const path = require('path');
+const fs = require('fs').promises;
+
 exports.init = async (licenses) => {
     try {
-        const directoryPath = 'src\\transport-station\\license\\license_preview';
-        
-        const files = await extensionFs.io.readFiles(directoryPath);
-        const images = files.map(file => ({
-            filename: file.filename,
-            path: file.path
+        const directoryPath = path.join(__dirname, 'license_preview');
+        console.log(directoryPath)
+        const files = await fs.readdir(directoryPath);
+
+        const images = await Promise.all(files.map(async (file) => {
+            const filePath = path.join(directoryPath, file);
+            const stats = await fs.stat(filePath);
+            if (stats.isFile()) {
+                return {
+                    filename: file,
+                    path: filePath
+                };
+            }
         }));
-        const savedImages = await imageService.createImages(images);
+
+        const validImages = images.filter(image => image !== undefined);
+        const savedImages = await imageService.createImages(validImages);
 
         await Promise.all(savedImages.map(async (image, index) => {
-            const license = licenses[index % licenses.length]; // Lấy giấy phép theo chỉ số ảnh
+            const license = licenses[index % licenses.length]; 
             const newLicense = {
                 name: license.name,
                 purpose: license.purpose,
                 image_preview: image._id,
             };
+
             const existingLicense = await licenseQuery.getOne({
                 name: license.name,
                 purpose: license.purpose,
@@ -79,11 +91,11 @@ exports.init = async (licenses) => {
                 console.log(`License already exists: ${newLicense.name}`);
             }
         }));
+
         const ls = await licenseQuery.getAll();
-        return ls
+        return ls;
     } catch (error) {
-        console.error(error);
-        throw "Service: Cannot create Licenses.";
-        return error
+        console.error('Error initializing licenses:', error);
+        throw new Error('Service: Cannot create Licenses.');
     }
 };

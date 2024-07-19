@@ -14,15 +14,15 @@ const registerTransportStationSchema = Joi.object({
         'string.empty': 'Tên không được để trống.',
         'any.required': 'Tên là bắt buộc.',
     }),
-    provinceCode: Joi.string().required().messages({
+    provinceId: Joi.string().required().messages({
         'string.empty': 'Mã tỉnh không được để trống.',
         'any.required': 'Mã tỉnh là bắt buộc.',
     }),
-    districtCode: Joi.string().required().messages({
+    districtId: Joi.string().required().messages({
         'string.empty': 'Mã huyện không được để trống.',
         'any.required': 'Mã huyện là bắt buộc.',
     }),
-    wardCode: Joi.string().required().messages({
+    wardId: Joi.string().required().messages({
         'string.empty': 'Mã xã không được để trống.',
         'any.required': 'Mã xã là bắt buộc.',
     }),
@@ -62,14 +62,21 @@ exports.registerTransportStation = async (req, res, next) => {
         }
 
         const { name, 
-                provinceCode, 
-                districtCode, 
-                wardCode, 
+                provinceId, 
+                districtId, 
+                wardId, 
                 addressDetail, 
                 email, 
                 telephone } = value;
-
-        const transportStation = await transportService.registerTransportStation(name, provinceCode, districtCode, wardCode, addressDetail, email, telephone);
+            
+        const transportStation = await transportService.registerTransportStation(name, 
+            provinceId, 
+            districtId, 
+            wardId, 
+            addressDetail, 
+            email, 
+            telephone);
+        console.log(transportStation)
         if (!transportStation) 
             res.status(201).json({
             message: 'Transport station registered failure, please try again !'
@@ -112,8 +119,7 @@ exports.finshedProcessRegister = async (req, res, next) => {
                 password: utils.generateRandomString(10)
             }
             userSaved = await userService.createUser(user.username, user.password);
-            await userService.findUserByIdAndUpdate(userSaved._id,'transport-station')
-        
+            await userService.findUserByIdAndUpdate(userSaved._id,'transport-station', transportStationFromServer._id)
         
         try {
             await transportQuery.updateUserIdInTransportStation(transportStationFromServer.id, userSaved._id);

@@ -2,6 +2,7 @@ const User = require('../user-model'); // Adjust the path to your user model
 const utilsToken = require('../utils/utils-token'); // Adjust the path to your utilsToken file
 
 const authentication = async (req, res, next) => {
+    console.log("Authentication middleware called");
     const authHeader = req.headers['authorization'];
     if (!authHeader) {
         return res.status(401).json({

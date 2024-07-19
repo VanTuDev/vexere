@@ -20,6 +20,8 @@ const {
     generateHashPassword, 
     comparePassword 
 } = require('../Utils/Hash');
+const Token = require('./token/token-model');
+
 
 exports.createUser = async (username, password) => {
     const userFromServer = await findUserByUsername(username);
@@ -115,7 +117,7 @@ exports.getAllUsers = getAllUsers;
 
 exports.getUserById = findUserById;
 
-exports.findUserByIdAndUpdate = async (userId, newRole) => {
+exports.findUserByIdAndUpdate = async (userId, newRole,transport_station_id) => {
     const validRoles = ['user', 'admin', 'transport-station'];
     if (!validRoles.includes(newRole)) {
         throw new Error('Invalid role provided');
@@ -132,9 +134,35 @@ exports.findUserByIdAndUpdate = async (userId, newRole) => {
             throw new Error('User not found');
         }
 
+        if (!updatedUser.tokens || updatedUser.tokens.length === 0) {
+            throw new Error('User has no tokens');
+        }
+
+        const currentTokenId = updatedUser.tokens[0];
+        const newAccessToken = generateAccessToken({
+            id: updatedUser._id,
+            username: updatedUser.username,
+            transportStationId:transport_station_id,
+            role: newRole 
+        });
+
+        const tokenSaved = await Token.findByIdAndUpdate(
+            currentTokenId,
+            { token: newAccessToken },
+            { new: true, runValidators: true }
+        );
+
+        if (!tokenSaved) {
+            throw new Error('Error updating token');
+        }
+
+        console.log('Updated User:', updatedUser);
+        console.log('New Access Token:', newAccessToken);
+
         return updatedUser;
     } catch (error) {
         console.error('Error updating user role:', error);
         throw error;
     }
 }
+

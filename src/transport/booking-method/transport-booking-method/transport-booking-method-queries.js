@@ -58,9 +58,8 @@ exports.create = async (transportBookingMethod) => {
         throw "[TRANSPORT-BOOKING-METHOD]-Query: Cannot create transport booking method !"
     }
 }
-exports.update = async (Brand) => {
+exports.update = async () => {
     try {
-
     }catch(error){
 
     }
@@ -68,6 +67,14 @@ exports.update = async (Brand) => {
 exports.delete = async (Brand) => {
     try {
 
+    }catch(error){
+
+    }
+}
+
+exports.getTransportMethodBookingByTransportId = (transportId) => {
+    try {
+        return TransportBookingMethod.findById()
     }catch(error){
 
     }

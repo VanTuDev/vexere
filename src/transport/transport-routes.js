@@ -10,6 +10,8 @@ const router = express.Router();
 module.exports = () => {
         router
         .get('/', handler.findAll) 
+        .get('/:transportId', handler.findById) 
+        .get('/transportStation/:transportStationId', handler.findAllTransportByTransportStation) 
         .post('/createTransport', 
                 upload.array('images', 20), 
                 injectSVG,

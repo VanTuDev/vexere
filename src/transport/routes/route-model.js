@@ -7,21 +7,25 @@ const routeSchema = new mongoose.Schema({
         unique: false,
         ref: 'Transport'
     },
-    departureLocation:{ // Current Place
+    price: {
+        type: Number,
+        require: true,
+    },
+    departureLocation:{ 
         type: mongoose.Schema.Types.ObjectId,
         require: true,
         ref: 'Province'
     },
-    destination:{ // Place to go
+    destination:{ 
         type: mongoose.Schema.Types.ObjectId,
         require: true,
         ref: 'Province'
     },
-    departureDate:{ // Time for the trip start
+    departureDate:{
         type: Date,
         require: true,
     },
-    returnDate:{ // Time for the car return back
+    returnDate:{ 
         type: Date,
         require: true,
     },

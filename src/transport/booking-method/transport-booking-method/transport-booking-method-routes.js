@@ -7,5 +7,6 @@ module.exports = () => {
     router
     .get('/', handler.getAll)
     .get('/getAllTransportByProvince', handler.getBookingMethodById) 
+    .put('/', handler.update) 
     return router;
 };

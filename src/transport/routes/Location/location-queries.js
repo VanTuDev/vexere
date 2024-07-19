@@ -59,6 +59,8 @@ const getAllLocations = async () => {
     }
 };
 
+
+
 module.exports = {
     createLocation,
     getLocationById,

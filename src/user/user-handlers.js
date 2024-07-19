@@ -28,6 +28,7 @@ exports.signup = async (req, res, next) => {
 
 exports.signin = async (req, res, next) => {
     try {
+        console.log(req.body)
         const { error } = userJoiSchema.validate(req.body, { abortEarly: false });
         if (error) {
             const errorMessages = error.details.map(detail => detail.message);

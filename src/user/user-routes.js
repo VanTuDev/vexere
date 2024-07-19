@@ -9,9 +9,9 @@ require('dotenv').config();
 
 module.exports = () => {
     router
+    .post('/signin',handler.signin)
     .get('/',authentication,authorize(['admin']), handler.getAllUser)
     .get('/:userId',authentication, authorize(['user', 'admin', 'transport-station']),handler.getById) 
-    .post('/signin', handler.signin)
     .post('/signup', handler.signup)
     .post('/refresh', handler.refresh)
     return router;

@@ -23,13 +23,13 @@ const transportSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         require: false,
         ref: 'Brand',
-        defaut: new mongoose.Types.ObjectId('569ed8269353e9f4c51617aa')
+        
     },
     transportTypeId:{
         type: mongoose.Schema.Types.ObjectId,
         require: false,
         ref: 'TransportType',
-        defaut: new mongoose.Types.ObjectId('569ed8269353e9f4c51617aa')
+        
     },
     status:{
         type: String, 
